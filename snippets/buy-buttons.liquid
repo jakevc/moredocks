@@ -60,6 +60,66 @@
           {%- render 'gift-card-recipient-form', product: product, form: form, section: section -%}
         {%- endif -%}
 
+        {%- unless product.gift_card? -%}
+          <div class="product-form__line-item-properties">
+            <div class="product-form__input product-form__input--dropdown">
+              <label class="form__label" for="waist-size-{{ section_id }}">
+                {{ 'products.product.waist_size' | t | default: 'Waist size' }}
+              </label>
+              <div class="select">
+                <select
+                  id="waist-size-{{ section_id }}"
+                  class="select__select"
+                  name="properties[Waist]"
+                  required
+                >
+                  <option value="" disabled selected>{{ 'products.product.select_waist' | t | default: 'Select a waist size' }}</option>
+                  <option value="28">28"</option>
+                  <option value="29">29"</option>
+                  <option value="30">30"</option>
+                  <option value="31">31"</option>
+                  <option value="32">32"</option>
+                  <option value="33">33"</option>
+                  <option value="34">34"</option>
+                  <option value="35">35"</option>
+                  <option value="36">36"</option>
+                  <option value="38">38"</option>
+                  <option value="40">40"</option>
+                </select>
+                <span class="svg-wrapper">
+                  {{- 'icon-caret.svg' | inline_asset_content -}}
+                </span>
+              </div>
+            </div>
+            <div class="product-form__input product-form__input--dropdown">
+              <label class="form__label" for="inseam-size-{{ section_id }}">
+                {{ 'products.product.inseam_size' | t | default: 'Inseam size' }}
+              </label>
+              <div class="select">
+                <select
+                  id="inseam-size-{{ section_id }}"
+                  class="select__select"
+                  name="properties[Inseam]"
+                  required
+                >
+                  <option value="" disabled selected>{{ 'products.product.select_inseam' | t | default: 'Select an inseam length' }}</option>
+                  <option value="29">29"</option>
+                  <option value="30">30"</option>
+                  <option value="31">31"</option>
+                  <option value="32">32"</option>
+                  <option value="33">33"</option>
+                  <option value="34">34"</option>
+                  <option value="35">35"</option>
+                  <option value="36">Not hemmed</option>
+                </select>
+                <span class="svg-wrapper">
+                  {{- 'icon-caret.svg' | inline_asset_content -}}
+                </span>
+              </div>
+            </div>
+          </div>
+        {%- endunless -%}
+
         <div class="product-form__buttons">
           {%- liquid
             assign check_against_inventory = true
