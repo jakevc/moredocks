@@ -26,7 +26,7 @@
       "settings": {
         "image": "shopify://shop_images/CJ.101.1_banner.jpg",
         "image_overlay_opacity": 0,
-        "image_height": "large",
+        "image_height": "adapt",
         "image_behavior": "none",
         "desktop_content_position": "top-left",
         "desktop_content_alignment": "center",
