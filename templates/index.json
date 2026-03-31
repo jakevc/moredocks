@@ -11,18 +11,6 @@
   "sections": {
     "image_banner": {
       "type": "image-banner",
-      "blocks": {
-        "text_t6mkn8": {
-          "type": "text",
-          "settings": {
-            "text": "<strong>Well kept. Kept close.</strong>",
-            "text_style": "subtitle"
-          }
-        }
-      },
-      "block_order": [
-        "text_t6mkn8"
-      ],
       "settings": {
         "image": "shopify://shop_images/CJ.101.1_banner.jpg",
         "image_overlay_opacity": 0,
@@ -31,7 +19,7 @@
         "desktop_content_position": "top-left",
         "desktop_content_alignment": "center",
         "show_text_box": false,
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-3",
         "stack_images_on_mobile": false,
         "mobile_content_alignment": "center",
         "show_text_below": false
