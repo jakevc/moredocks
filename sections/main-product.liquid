@@ -210,7 +210,7 @@
                         {{- 'icon-caret.svg' | inline_asset_content -}}
                       </summary>
                       <div class="accordion__content rte" id="ProductAccordion-FitInfo-{{ block.id }}-{{ section.id }}">
-                        {{ product.metafields.custom.fit_info.value }}
+                        {{ product.metafields.custom.fit_info.value | newline_to_br }}
                       </div>
                     </details>
                   </div>
