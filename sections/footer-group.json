@@ -13,10 +13,22 @@
   "sections": {
     "footer": {
       "type": "footer",
+      "blocks": {
+        "text_3wrLRy": {
+          "type": "text",
+          "settings": {
+            "heading": "Get in touch with us!",
+            "subtext": "<p>service@moredocks.com</p>"
+          }
+        }
+      },
+      "block_order": [
+        "text_3wrLRy"
+      ],
       "settings": {
         "color_scheme": "scheme-1",
         "newsletter_enable": true,
-        "newsletter_heading": "Get in touch",
+        "newsletter_heading": "Want to be on our mailing list?",
         "enable_follow_on_shop": false,
         "show_social": true,
         "enable_country_selector": true,
