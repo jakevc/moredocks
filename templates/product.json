@@ -12,6 +12,13 @@
     "main": {
       "type": "main-product",
       "blocks": {
+        "fit_info_TnGFee": {
+          "type": "fit_info",
+          "settings": {
+            "heading": "Fit Info",
+            "fit_info_content": "<p>Our model is 6'0, has a 38\" chest, 32\" waist and 32\" inseam. He wears a size 30 (waist) x 33 (inseam) in the CJ.101.1. <br/><br/>We recommend two sizes below your natural waist measurement in inches. This jean will shrink about 3/4\" in the length when washed and dried. To minimize shrinkage, wash and hang dry. </p>"
+          }
+        },
         "title": {
           "type": "title",
           "settings": {}
@@ -50,6 +57,7 @@
         }
       },
       "block_order": [
+        "fit_info_TnGFee",
         "title",
         "price",
         "variant_picker",
