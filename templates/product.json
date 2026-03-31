@@ -42,6 +42,12 @@
           "type": "description",
           "settings": {}
         },
+        "fit_info_TnGFee": {
+          "type": "fit_info",
+          "settings": {
+            "heading": "Fit Info"
+          }
+        },
         "share": {
           "type": "share",
           "settings": {
