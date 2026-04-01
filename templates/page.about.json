@@ -11,13 +11,84 @@
   "sections": {
     "main": {
       "type": "main-page",
+      "disabled": true,
       "settings": {
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "image_banner_DD3PkM": {
+      "type": "image-banner",
+      "blocks": {
+        "heading_eaHhRw": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "hxl"
+          }
+        },
+        "text_FV4BRT": {
+          "type": "text",
+          "settings": {
+            "text": "",
+            "text_style": "body"
+          }
+        }
+      },
+      "block_order": [
+        "heading_eaHhRw",
+        "text_FV4BRT"
+      ],
+      "name": "t:sections.image-banner.presets.name",
+      "settings": {
+        "image": "shopify://shop_images/AW_Factory.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": true
+      }
+    },
+    "rich_text_Bgid4t": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_JBBAGW": {
+          "type": "heading",
+          "settings": {
+            "heading": "",
+            "heading_size": "h1"
+          }
+        },
+        "text_gcWm8i": {
+          "type": "text",
+          "settings": {
+            "text": "<p>At Moredocks...</p><p>We </p>"
+          }
+        }
+      },
+      "block_order": [
+        "heading_JBBAGW",
+        "text_gcWm8i"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "image_banner_DD3PkM",
+    "rich_text_Bgid4t"
   ]
 }
