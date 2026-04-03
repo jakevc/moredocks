@@ -51,7 +51,7 @@
         "return_policy_3KxTyc": {
           "type": "return_policy",
           "settings": {
-            "heading": "Returns",
+            "heading": "Exchanges",
             "icon": "return",
             "link_label": "View full return policy"
           }
