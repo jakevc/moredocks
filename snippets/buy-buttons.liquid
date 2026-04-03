@@ -118,6 +118,20 @@
                 </span>
               </div>
             </div>
+            <div class="product-form__input product-form__comments">
+              <label class="form__label" for="order-comments-{{ section_id }}">
+                Comments
+              </label>
+              <div class="field">
+                <textarea
+                  id="order-comments-{{ section_id }}"
+                  class="text-area text-area--resize-vertical field__input"
+                  name="properties[Comments]"
+                  rows="2"
+                  placeholder="Anything else you want us to know"
+                ></textarea>
+              </div>
+            </div>
           </div>
         {%- endunless -%}
 
