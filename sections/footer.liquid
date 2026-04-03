@@ -304,16 +304,32 @@
         </small>
         <small class="copyright__content">{{ powered_by_link }}</small>
         {%- if section.settings.show_policy -%}
+          {%- assign exchange_policy_page = pages['exchange-policy'] -%}
+          {%- assign exchange_policy_rendered = false -%}
           <ul class="policies list-unstyled">
             {%- for policy in shop.policies -%}
               {%- if policy != blank -%}
                 <li>
-                  <small class="copyright__content"
-                    ><a href="{{ policy.url }}">{{ policy.title | escape }}</a></small
-                  >
+                  {%- if exchange_policy_page != blank and shop.refund_policy != blank and policy.url == shop.refund_policy.url -%}
+                    {%- assign exchange_policy_rendered = true -%}
+                    <small class="copyright__content"
+                      ><a href="{{ exchange_policy_page.url }}">{{ exchange_policy_page.title | escape }}</a></small
+                    >
+                  {%- else -%}
+                    <small class="copyright__content"
+                      ><a href="{{ policy.url }}">{{ policy.title | escape }}</a></small
+                    >
+                  {%- endif -%}
                 </li>
               {%- endif -%}
             {%- endfor -%}
+            {%- if exchange_policy_page != blank and exchange_policy_rendered == false -%}
+              <li>
+                <small class="copyright__content"
+                  ><a href="{{ exchange_policy_page.url }}">{{ exchange_policy_page.title | escape }}</a></small
+                >
+              </li>
+            {%- endif -%}
           </ul>
         {%- endif -%}
       </div>
