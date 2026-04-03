@@ -48,6 +48,14 @@
             "heading": "Fit Info"
           }
         },
+        "return_policy_3KxTyc": {
+          "type": "return_policy",
+          "settings": {
+            "heading": "Returns",
+            "icon": "return",
+            "link_label": "View full return policy"
+          }
+        },
         "share": {
           "type": "share",
           "settings": {
@@ -63,6 +71,7 @@
         "buy_buttons",
         "description",
         "fit_info_TnGFee",
+        "return_policy_3KxTyc",
         "share"
       ],
       "settings": {
