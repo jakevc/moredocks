@@ -48,6 +48,12 @@
             "heading": "Fit Info"
           }
         },
+        "size_chart": {
+          "type": "size_chart",
+          "settings": {
+            "heading": "Size Chart"
+          }
+        },
         "return_policy_3KxTyc": {
           "type": "return_policy",
           "settings": {
@@ -71,6 +77,7 @@
         "buy_buttons",
         "description",
         "fit_info_TnGFee",
+        "size_chart",
         "return_policy_3KxTyc",
         "share"
       ],

@@ -1,0 +1,54 @@
+.size-chart-table {
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.size-chart-unit-toggle {
+  display: flex;
+  gap: 0;
+  margin-bottom: 1.2rem;
+  width: fit-content;
+  border: 1px solid rgba(var(--color-foreground), 0.15);
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.size-chart-unit-btn {
+  padding: 0.4rem 1.2rem;
+  font-size: 1.3rem;
+  font-weight: 600;
+  cursor: pointer;
+  border: none;
+  background: transparent;
+  color: rgb(var(--color-foreground));
+  transition: background-color 0.15s, color 0.15s;
+}
+
+.size-chart-unit-btn.active {
+  background-color: rgb(var(--color-foreground));
+  color: rgb(var(--color-background));
+}
+
+.size-chart-table table {
+  width: max-content;
+  min-width: 100%;
+  border-collapse: collapse;
+  font-size: 1.4rem;
+  text-align: left;
+}
+
+.size-chart-table th,
+.size-chart-table td {
+  padding: 0.8rem 1.2rem;
+  border: 1px solid rgba(var(--color-foreground), 0.15);
+  white-space: nowrap;
+}
+
+.size-chart-table thead th {
+  background-color: rgba(var(--color-foreground), 0.04);
+  font-weight: 600;
+}
+
+.size-chart-table tbody tr:hover {
+  background-color: rgba(var(--color-foreground), 0.02);
+}
