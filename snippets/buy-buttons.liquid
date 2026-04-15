@@ -62,6 +62,7 @@
 
         {%- unless product.gift_card? -%}
           <div class="product-form__line-item-properties">
+            {%- if product.tags contains 'pants' -%}
             <div class="product-form__input product-form__input--dropdown">
               <label class="form__label" for="waist-size-{{ section_id }}">
                 {{ 'products.product.waist_size' | t | default: 'Waist size' }}
@@ -119,6 +120,61 @@
                 </span>
               </div>
             </div>
+            {%- endif -%}
+            {%- if product.tags contains 'shirt' -%}
+            <div class="product-form__input product-form__input--dropdown">
+              <label class="form__label" for="neck-size-{{ section_id }}">
+                {{ 'products.product.neck_size' | t | default: 'Neck size' }}
+              </label>
+              <div class="select">
+                <select
+                  id="neck-size-{{ section_id }}"
+                  class="select__select"
+                  name="properties[Neck]"
+                  required
+                >
+                  <option value="" disabled selected>{{ 'products.product.select_neck' | t | default: 'Select a neck size' }}</option>
+                  <option value="14">14"</option>
+                  <option value="14.5">14½"</option>
+                  <option value="15">15"</option>
+                  <option value="15.5">15½"</option>
+                  <option value="16">16"</option>
+                  <option value="16.5">16½"</option>
+                  <option value="17">17"</option>
+                  <option value="17.5">17½"</option>
+                  <option value="18">18"</option>
+                  <option value="18.5">18½"</option>
+                </select>
+                <span class="svg-wrapper">
+                  {{- 'icon-caret.svg' | inline_asset_content -}}
+                </span>
+              </div>
+            </div>
+            <div class="product-form__input product-form__input--dropdown">
+              <label class="form__label" for="sleeve-length-{{ section_id }}">
+                {{ 'products.product.sleeve_length' | t | default: 'Sleeve length' }}
+              </label>
+              <div class="select">
+                <select
+                  id="sleeve-length-{{ section_id }}"
+                  class="select__select"
+                  name="properties[Sleeve]"
+                  required
+                >
+                  <option value="" disabled selected>{{ 'products.product.select_sleeve' | t | default: 'Select a sleeve length' }}</option>
+                  <option value="32">32"</option>
+                  <option value="33">33"</option>
+                  <option value="34">34"</option>
+                  <option value="35">35"</option>
+                  <option value="36">36"</option>
+                  <option value="37">37"</option>
+                </select>
+                <span class="svg-wrapper">
+                  {{- 'icon-caret.svg' | inline_asset_content -}}
+                </span>
+              </div>
+            </div>
+            {%- endif -%}
             <div class="product-form__input product-form__comments">
               <label class="form__label" for="order-comments-{{ section_id }}">
                 Comments
