@@ -25,6 +25,49 @@
         "show_text_below": false
       }
     },
+    "rich_text_rWKBWt": {
+      "type": "rich-text",
+      "blocks": {
+        "heading_XiYewX": {
+          "type": "heading",
+          "settings": {
+            "heading": "American garments with a composed silhouette",
+            "heading_size": "h2"
+          }
+        },
+        "text_dK3Ym9": {
+          "type": "text",
+          "settings": {
+            "text": "<p>Produced one at a time in Portland, Oregon. Refined continuously rather than released seasonally.</p>"
+          }
+        },
+        "button_LkER7J": {
+          "type": "button",
+          "settings": {
+            "button_label": "About Us",
+            "button_link": "shopify://pages/about-us",
+            "button_style_secondary": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "heading_XiYewX",
+        "text_dK3Ym9",
+        "button_LkER7J"
+      ],
+      "name": "t:sections.rich-text.presets.name",
+      "settings": {
+        "desktop_content_position": "center",
+        "content_alignment": "center",
+        "color_scheme": "",
+        "full_width": true,
+        "padding_top": 40,
+        "padding_bottom": 52
+      }
+    },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
@@ -56,6 +99,7 @@
   },
   "order": [
     "image_banner",
+    "rich_text_rWKBWt",
     "featured_collection"
   ]
 }
