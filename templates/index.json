@@ -127,7 +127,7 @@
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
         "title": "Press",
-        "heading_size": "h1",
+        "heading_size": "h2",
         "image_width": "full",
         "image_ratio": "adapt",
         "button_label": "",
