@@ -104,7 +104,7 @@
           "settings": {
             "image": "shopify://shop_images/Screenshot_2026-06-06_at_3.53.27_PM.png",
             "title": "",
-            "text": "<p>\"...they're the best fitting jeans I own...There's a beautiful simplicity in them.\" - Nico Lazaro (@nickelcobalt)</p>",
+            "text": "<p>\"...they're the best fitting jeans I own...There's a beautiful simplicity in them.\"  </p>",
             "link_label": "The Bengal Stripe",
             "link": "https://thebengalstripe.substack.com/p/everything-i-did-to-prepare-for-my"
           }
@@ -114,7 +114,7 @@
           "settings": {
             "image": "shopify://shop_images/Screenshot_2026-06-06_at_4.00.16_PM.png",
             "title": "",
-            "text": "<p>\"I like the fact that they're made in the US, they're made to order...They're great. I love them. The fit really, really nicely. So if you're into bootcut jeans, you don't have a lot of places to go...\"  - Peter Zottolo (@urbancomposition)</p>",
+            "text": "<p>\"I like the fact that they're made in the US, they're made to order...They're great. I love them. They fit really, really nicely. So if you're into bootcut jeans, you don't have a lot of places to go...\"  </p>",
             "link_label": "Die, Workwear! Podcast",
             "link": "https://www.patreon.com/cw/blamo"
           }
@@ -141,12 +141,70 @@
         "padding_top": 36,
         "padding_bottom": 36
       }
+    },
+    "multicolumn_htqCFU": {
+      "type": "multicolumn",
+      "blocks": {
+        "column_V9ArRx": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/IMG_8626.jpg",
+            "title": "<strong>@</strong><a href=\"https://www.instagram.com/amekajihead/?hl=en#\"><strong>amekajihead</strong></a>",
+            "text": "<p>\"There’s a lot I love about these jeans but the two things that I particularly am stoked about are 1) high-rise and subtle flared silhouette and 2) the retro colour of indigo denim. Super excited to see how this pair will age over time as well.\"</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_bEAwka": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/CB50FFF9-4422-4C27-BC84-FCE263ED35CF.jpg",
+            "title": "<strong>@</strong><a href=\"https://www.instagram.com/nickelcobalt/?hl=en#\"><strong>nickelcobalt</strong></a>",
+            "text": "<p>\"The best fitting jeans I own. Did I mention how good these look with tailoring?\"</p>",
+            "link_label": "",
+            "link": ""
+          }
+        },
+        "column_Tetpd8": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Screenshot_2026-06-10_at_9.43.14_AM.png",
+            "title": "<strong>@</strong><a href=\"https://www.instagram.com/lucasnicholson/?hl=en#\"><strong>lucasnicholson</strong></a>",
+            "text": "<p>\"Anyone that has been following me for a while knows that I like 517 bootcuts from Levis... these are better. Very similar cut, but if you don't want to go into the mess of buying vintage, this is for you.\"</p>",
+            "link_label": "",
+            "link": ""
+          }
+        }
+      },
+      "block_order": [
+        "column_V9ArRx",
+        "column_bEAwka",
+        "column_Tetpd8"
+      ],
+      "name": "t:sections.multicolumn.presets.name",
+      "settings": {
+        "title": "Reviews",
+        "heading_size": "h2",
+        "image_width": "full",
+        "image_ratio": "adapt",
+        "button_label": "",
+        "button_link": "",
+        "columns_desktop": 3,
+        "column_alignment": "left",
+        "background_style": "primary",
+        "color_scheme": "",
+        "columns_mobile": "1",
+        "swipe_on_mobile": false,
+        "padding_top": 36,
+        "padding_bottom": 36
+      }
     }
   },
   "order": [
     "image_banner",
     "rich_text_rWKBWt",
     "featured_collection",
-    "multicolumn_A6rYVc"
+    "multicolumn_A6rYVc",
+    "multicolumn_htqCFU"
   ]
 }
