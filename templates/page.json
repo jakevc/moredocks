@@ -22,7 +22,7 @@
         "cowlendar_booking_app_section_G7qxYc": {
           "type": "shopify://apps/cowlendar-booking/blocks/app-section/6d8b8f6a-9b3c-42b8-b2e6-a758c38d45bf",
           "settings": {
-            "section_title": "My services list",
+            "section_title": "Book an appointment",
             "section_number": "services-list-1"
           }
         }
