@@ -15,9 +15,28 @@
         "padding_top": 28,
         "padding_bottom": 28
       }
+    },
+    "17828502170d99da88": {
+      "type": "apps",
+      "blocks": {
+        "cowlendar_booking_app_section_btDkPT": {
+          "type": "shopify://apps/cowlendar-booking/blocks/app-section/6d8b8f6a-9b3c-42b8-b2e6-a758c38d45bf",
+          "settings": {
+            "section_title": "My services list",
+            "section_number": "services-list-1"
+          }
+        }
+      },
+      "block_order": [
+        "cowlendar_booking_app_section_btDkPT"
+      ],
+      "settings": {
+        "include_margins": true
+      }
     }
   },
   "order": [
-    "main"
+    "main",
+    "17828502170d99da88"
   ]
 }
