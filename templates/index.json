@@ -184,13 +184,24 @@
             "link_label": "",
             "link": ""
           }
+        },
+        "column_JDW4qP": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/B9AAB356-8EEF-4134-B0AA-E5EC9BD2CE88.jpg",
+            "title": "<strong>@</strong><a href=\"https://www.instagram.com/lucasnicholson/?hl=en#\"><strong>m.p.carter_</strong></a>",
+            "text": "<p>\"It starts slimmer and as you wear them they don’t get baggy. The quality feels sturdy and will be able to retain after hard wearing.\"</p>",
+            "link_label": "",
+            "link": ""
+          }
         }
       },
       "block_order": [
         "column_V9ArRx",
         "column_bEAwka",
         "column_Tetpd8",
-        "column_BUFmq3"
+        "column_BUFmq3",
+        "column_JDW4qP"
       ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
@@ -200,7 +211,7 @@
         "image_ratio": "adapt",
         "button_label": "",
         "button_link": "",
-        "columns_desktop": 4,
+        "columns_desktop": 5,
         "column_alignment": "left",
         "background_style": "primary",
         "color_scheme": "",
