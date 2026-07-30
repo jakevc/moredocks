@@ -73,7 +73,7 @@
       "settings": {
         "collection": "all",
         "products_to_show": 2,
-        "title": "Product Catalog",
+        "title": "Catalog",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
