@@ -18,7 +18,7 @@
           "type": "text",
           "settings": {
             "heading": "Drop us a line.",
-            "subtext": "<p>service@moredocks.com</p>"
+            "subtext": "<p><a href=\"mailto:service@moredocks.com\">service@moredocks.com</a></p>"
           }
         }
       },
