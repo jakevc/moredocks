@@ -23,7 +23,16 @@
   .md-marquee-{{ section.id }} .md-marquee__sep {
     opacity: 0.45;
   }
+  /* Stack on mobile. Wrapping mid-row leaves a separator orphaned at the
+     end of a line, so drop the diamonds and give each phrase its own. */
   @media screen and (max-width: 749px) {
+    .md-marquee-{{ section.id }} .md-marquee__row {
+      flex-direction: column;
+      row-gap: 0.6rem;
+    }
+    .md-marquee-{{ section.id }} .md-marquee__sep {
+      display: none;
+    }
     .md-marquee-{{ section.id }} .md-marquee__item {
       font-size: {{ section.settings.text_size | times: 0.8 }}rem;
       letter-spacing: 0.1em;
