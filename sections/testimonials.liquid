@@ -31,10 +31,13 @@
     }
   }
   .md-quotes-{{ section.id }} .md-quote figure { margin: 0; }
+  /* height:auto is required — image_tag emits a height attribute, and CSS
+     aspect-ratio is ignored unless one dimension is auto. */
   .md-quotes-{{ section.id }} .md-quote__img {
     aspect-ratio: 4 / 5;
     object-fit: cover;
     width: 100%;
+    height: auto;
     display: block;
     margin-bottom: 1.6rem;
   }
