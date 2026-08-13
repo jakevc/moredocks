@@ -1,0 +1,70 @@
+/* Moredocks theme overhaul — custom refinements
+   Palette from Moredocks_Branding_r1: sage #a7a38b, olive #4d4832,
+   camel #bba062, mauve #9f8175, brick #933a30, oxblood #5a190e, brown #523b27 */
+
+/* ---- Full-width desktop layout: navbar spans the whole viewport ---- */
+.header-wrapper .page-width,
+.section-header .page-width {
+  max-width: none;
+}
+
+@media screen and (min-width: 990px) {
+  .header-wrapper .page-width {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+/* ---- Typography: quiet, editorial ---- */
+h1, h2, h3, .h0, .h1, .h2, .h3 {
+  letter-spacing: 0.01em;
+}
+
+.banner__heading {
+  letter-spacing: 0.015em;
+}
+
+/* Uppercase, letterspaced eyebrow-style buttons and nav */
+.button,
+.shopify-challenge__button,
+.customer button {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 1.2rem;
+}
+
+summary.header__menu-item,
+.header__menu-item {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 1.2rem;
+}
+
+/* ---- Image discipline: consistent aspect ratios ---- */
+.md-ratio-45 {
+  aspect-ratio: 4 / 5;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+.md-ratio-32 {
+  aspect-ratio: 3 / 2;
+  object-fit: cover;
+  width: 100%;
+  height: auto;
+  display: block;
+}
+
+/* Product cards: normalize gallery crops so the catalogue reads as one set */
+.card--standard .card__media .media img {
+  object-fit: cover;
+}
+
+/* ---- Subtle motion restraint ---- */
+@media (prefers-reduced-motion: reduce) {
+  .md-marquee__track {
+    animation: none !important;
+  }
+}
