@@ -1,6 +1,7 @@
 /* Moredocks theme overhaul — custom refinements
-   Palette from Moredocks_Branding_r1: sage #a7a38b, olive #4d4832,
-   camel #bba062, mauve #9f8175, brick #933a30, oxblood #5a190e, brown #523b27 */
+   Palette lives in config/settings_data.json as scheme-1..5:
+   cream #f6f3ea, oatmeal #ebe7d9, ink #26221b, olive #4d4832,
+   oxblood #5a190e, brass #bba062 */
 
 /* ---- Full-width desktop layout: navbar spans the whole viewport ---- */
 .header-wrapper .page-width,
@@ -38,23 +39,6 @@ summary.header__menu-item,
   text-transform: uppercase;
   letter-spacing: 0.1em;
   font-size: 1.2rem;
-}
-
-/* ---- Image discipline: consistent aspect ratios ---- */
-.md-ratio-45 {
-  aspect-ratio: 4 / 5;
-  object-fit: cover;
-  width: 100%;
-  height: auto;
-  display: block;
-}
-
-.md-ratio-32 {
-  aspect-ratio: 3 / 2;
-  object-fit: cover;
-  width: 100%;
-  height: auto;
-  display: block;
 }
 
 /* Product cards: normalize gallery crops so the catalogue reads as one set */

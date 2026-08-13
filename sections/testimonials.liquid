@@ -20,6 +20,10 @@
     padding-right: 4rem;
   }
   .md-quotes-{{ section.id }} .md-quotes__track::-webkit-scrollbar { display: none; }
+  .md-quotes-{{ section.id }} .md-quotes__track:focus-visible {
+    outline: 2px solid rgba(var(--color-foreground), 0.6);
+    outline-offset: 2px;
+  }
   .md-quotes-{{ section.id }} .md-quote {
     flex: 0 0 auto;
     width: 78vw;
@@ -59,16 +63,30 @@
   .md-quotes-{{ section.id }} .md-quote cite a { color: inherit; }
 {%- endstyle -%}
 
+{%- liquid
+  assign per_view_vw = 100 | divided_by: section.settings.per_view
+  capture sizes_attr
+    echo '(min-width: 750px) '
+    echo per_view_vw
+    echo 'vw, 78vw'
+  endcapture
+-%}
+
 <div class="md-quotes-{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
   {%- if section.settings.heading != blank -%}
     <h2 class="md-quotes__heading">{{ section.settings.heading | escape }}</h2>
   {%- endif -%}
-  <div class="md-quotes__track" role="list">
+  <div
+    class="md-quotes__track"
+    role="list"
+    tabindex="0"
+    aria-label="{{ section.settings.heading | default: 'Reviews' | escape }}"
+  >
     {%- for block in section.blocks -%}
       <div class="md-quote" role="listitem" {{ block.shopify_attributes }}>
         <figure>
           {%- if block.settings.show_image and block.settings.image != blank -%}
-            {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', class: 'md-quote__img', sizes: '(min-width: 750px) 25vw, 100vw', widths: '450, 700, 900' }}
+            {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', class: 'md-quote__img', sizes: sizes_attr, widths: '450, 700, 900' }}
           {%- endif -%}
           <blockquote>{{ block.settings.quote }}</blockquote>
           {%- if block.settings.author != blank -%}

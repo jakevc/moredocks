@@ -22,8 +22,15 @@
     width: 72vw;
     scroll-snap-align: start;
   }
+  /* Narrower than an exact 1/per_view share so the next photo peeks in and the
+     row reads as scrollable — the old math left a 0.8rem gap and no peek. */
   @media screen and (min-width: 750px) {
-    .md-rail-{{ section.id }} .md-rail__item { width: calc((100vw - 3.2rem) / {{ section.settings.per_view }}); }
+    .md-rail-{{ section.id }} .md-rail__item { width: calc(100vw / {{ section.settings.per_view }} - 2.4rem); }
+  }
+  /* Visible focus ring when the track is tabbed to. */
+  .md-rail-{{ section.id }} .md-rail__track:focus-visible {
+    outline: 2px solid rgba(var(--color-foreground), 0.6);
+    outline-offset: -2px;
   }
   .md-rail-{{ section.id }} .md-rail__item img,
   .md-rail-{{ section.id }} .md-rail__item svg {
@@ -35,15 +42,29 @@
   }
 {%- endstyle -%}
 
+{%- liquid
+  assign per_view_vw = 100 | divided_by: section.settings.per_view
+  capture sizes_attr
+    echo '(min-width: 750px) '
+    echo per_view_vw
+    echo 'vw, 72vw'
+  endcapture
+-%}
+
 <div class="md-rail-{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
   {%- if section.settings.heading != blank -%}
     <div class="md-rail__head"><h2>{{ section.settings.heading | escape }}</h2></div>
   {%- endif -%}
-  <div class="md-rail__track" role="list">
+  <div
+    class="md-rail__track"
+    role="list"
+    tabindex="0"
+    aria-label="{{ section.settings.heading | default: 'Photographs' | escape }}"
+  >
     {%- for block in section.blocks -%}
       <div class="md-rail__item" role="listitem" {{ block.shopify_attributes }}>
         {%- if block.settings.image != blank -%}
-          {{ block.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', sizes: '(min-width: 750px) 33vw, 72vw', widths: '600, 900, 1200' }}
+          {{ block.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: block.settings.alt, sizes: sizes_attr, widths: '600, 900, 1200' }}
         {%- elsif block.settings.asset_image != blank -%}
           <img src="{{ block.settings.asset_image | asset_url }}" alt="{{ block.settings.alt | default: 'Moredocks' | escape }}" loading="lazy">
         {%- else -%}
