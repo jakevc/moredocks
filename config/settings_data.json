@@ -12,7 +12,7 @@
     "logo": "shopify://shop_images/Moredocks_Wordmark_Black.png",
     "logo_width": 100,
     "favicon": "shopify://shop_images/Moredocks_Logo_Icon_Black.svg",
-    "type_header_font": "eb_garamond_n4",
+    "type_header_font": "ebgaramond_n4",
     "heading_scale": 115,
     "type_body_font": "assistant_n4",
     "body_scale": 100,
