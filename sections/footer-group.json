@@ -20,9 +20,17 @@
             "heading": "Drop us a line.",
             "subtext": "<p><a href=\"mailto:service@moredocks.com\">service@moredocks.com</a></p>"
           }
+        },
+        "link_list_nav": {
+          "type": "link_list",
+          "settings": {
+            "heading": "",
+            "menu": "main-menu"
+          }
         }
       },
       "block_order": [
+        "link_list_nav",
         "text_3wrLRy"
       ],
       "settings": {
