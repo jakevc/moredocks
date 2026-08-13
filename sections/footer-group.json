@@ -27,7 +27,7 @@
       ],
       "settings": {
         "color_scheme": "scheme-1",
-        "newsletter_enable": true,
+        "newsletter_enable": false,
         "newsletter_heading": "Want to be on our mailing list?",
         "enable_follow_on_shop": false,
         "show_social": true,
