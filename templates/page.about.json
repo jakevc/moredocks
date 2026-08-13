@@ -41,7 +41,7 @@
       ],
       "name": "t:sections.image-banner.presets.name",
       "settings": {
-        "image": "shopify://shop_images/AW_Factory.jpg",
+        "image": "shopify://shop_images/md-about-hero.jpg",
         "image_overlay_opacity": 0,
         "image_height": "medium",
         "image_behavior": "none",
@@ -67,7 +67,7 @@
         "text_gcWm8i": {
           "type": "text",
           "settings": {
-            "text": "<p>Our garments are designed, patterned, graded and sewn under a master pattern-maker with 30 years of experience in the clothing industry. Everything is made-to-order by our manufacturing facility in Portland, OR, USA. </p><p>We only make what you order, and we only make one garment at a time. While it does take longer to prepare and ship a garment for you, there are many benefits to this approach: </p><p>- We don't keep inventory on hand. That means we don't have leftover product that never gets sold. We generate very little waste. </p><p>- As we gather feedback from you about our clothes, we can make changes very quickly. Those changes are reflected in the names of each product. ex. CJ.101.<strong>1</strong> is version 1, CJ.101.<strong>2 </strong>is the next iteration, and so on. </p><p>- Our quality control is incredibly high because we can evaluate each garment as it goes through our line. If something goes wrong, we only have to scrap one item, not one hundred. </p><p>- Flexibility is our biggest asset. Don't see a size you need? Need a custom alteration? Just ask, we might be able to accommodate you. </p><p>If Portland, OR is accessible to you, we'd love to have you by our studio and show you around. </p><p></p><p></p><p></p><p></p><p></p><p></p>"
+            "text": "<p>Everything is patterned and sewn in Portland, Oregon, under a pattern-maker with thirty years in the trade.</p><p>We make one garment at a time, after you order it. It takes longer. In exchange, nothing sits in a warehouse waiting to be marked down, and nothing gets thrown out because we guessed wrong about how many people wanted a 32.</p><p>When something about a garment is wrong, we change it, and the number moves. CJ.101.<strong>1</strong> becomes CJ.101.<strong>2</strong>. The pair you own stays the pair you own — we just stop making that version. Most of the changes are small enough that only we would notice.</p><p>Every garment gets looked at on its way through the line. When one comes off wrong, we lose one.</p><p>If you need a size we don't list, or a length we don't cut, ask. Sometimes the answer is yes.</p><p>The studio is in Portland. If you're nearby, come by.</p>"
           }
         }
       },
@@ -84,11 +84,30 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
+    },
+    "image_banner_factory": {
+      "type": "image-banner",
+      "blocks": {},
+      "block_order": [],
+      "settings": {
+        "image": "shopify://shop_images/AW_Factory.jpg",
+        "image_overlay_opacity": 0,
+        "image_height": "medium",
+        "image_behavior": "none",
+        "desktop_content_position": "middle-center",
+        "desktop_content_alignment": "center",
+        "show_text_box": false,
+        "color_scheme": "",
+        "stack_images_on_mobile": true,
+        "mobile_content_alignment": "center",
+        "show_text_below": false
+      }
     }
   },
   "order": [
     "main",
     "image_banner_DD3PkM",
-    "rich_text_Bgid4t"
+    "rich_text_Bgid4t",
+    "image_banner_factory"
   ]
 }
