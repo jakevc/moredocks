@@ -61,3 +61,19 @@ summary.header__menu-item,
 .card--standard .card__media .media img {
   object-fit: cover;
 }
+
+/* ---- Product gallery: one frame for the detail grid ----
+   Dawn sizes each media slot from its own image (--preview-ratio), so a 3:2
+   detail next to a 2:3 shot leaves the grid staggered. Pin the secondary
+   media to the site's 4:5 — .media > img is already object-fit: cover.
+   The first media keeps its natural ratio so a full-length shot doesn't
+   lose its head or feet. */
+.product__media-item:not(:first-child) .product-media-container {
+  --aspect-ratio: 0.8;
+}
+
+/* constrain-height clamps padding-top to a px height, which would round the
+   4:5 off on shorter viewports. Secondary media are small enough not to need it. */
+.product__media-item:not(:first-child) .product-media-container.constrain-height .media {
+  padding-top: var(--ratio-percent);
+}
