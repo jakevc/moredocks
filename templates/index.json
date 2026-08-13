@@ -12,13 +12,6 @@
     "image_banner": {
       "type": "image-banner",
       "blocks": {
-        "hero_heading": {
-          "type": "heading",
-          "settings": {
-            "heading": "American garments with a strong silhouette",
-            "heading_size": "h0"
-          }
-        },
         "hero_buttons": {
           "type": "buttons",
           "settings": {
@@ -31,7 +24,7 @@
           }
         }
       },
-      "block_order": ["hero_heading", "hero_buttons"],
+      "block_order": ["hero_buttons"],
       "settings": {
         "image": "shopify://shop_images/Moredocks-24.jpg",
         "image_overlay_opacity": 20,
