@@ -62,7 +62,7 @@
 {%- liquid
   assign product = section.settings.product
   assign img = section.settings.image
-  if img == blank and product != blank
+  if img == blank and section.settings.asset_image == blank and product != blank
     assign img = product.featured_image
   endif
 -%}
@@ -109,8 +109,8 @@
   "class": "section",
   "settings": [
     { "type": "product", "id": "product", "label": "Product" },
-    { "type": "image_picker", "id": "image", "label": "Image", "info": "Falls back to the product's featured image, then the theme asset below." },
-    { "type": "text", "id": "asset_image", "label": "Theme asset filename (fallback)", "info": "e.g. md-spot-jean.jpg — used when no image is selected above." },
+    { "type": "image_picker", "id": "image", "label": "Image", "info": "Falls back to the theme asset below, then the product's featured image." },
+    { "type": "text", "id": "asset_image", "label": "Theme asset filename", "info": "e.g. md-spot-jean.jpg — used when no image is selected above. Takes precedence over the product photo so editorial shots aren't replaced by catalogue cutouts." },
     { "type": "text", "id": "eyebrow", "label": "Eyebrow", "default": "Made to order" },
     { "type": "text", "id": "heading", "label": "Heading", "default": "The Cowboy Jean" },
     { "type": "richtext", "id": "text", "label": "Text" },
