@@ -51,10 +51,9 @@
       "blocks": {
         "phrase_1": { "type": "phrase", "settings": { "text": "Made to order" } },
         "phrase_2": { "type": "phrase", "settings": { "text": "Portland, Oregon" } },
-        "phrase_3": { "type": "phrase", "settings": { "text": "American garments" } },
-        "phrase_4": { "type": "phrase", "settings": { "text": "Produced one at a time" } }
+        "phrase_3": { "type": "phrase", "settings": { "text": "American garments" } }
       },
-      "block_order": ["phrase_1", "phrase_2", "phrase_3", "phrase_4"],
+      "block_order": ["phrase_1", "phrase_2", "phrase_3"],
       "settings": {
         "color_scheme": "scheme-5",
         "speed": 35,
@@ -75,7 +74,7 @@
         "text_dK3Ym9": {
           "type": "text",
           "settings": {
-            "text": "<p>Made to order in Portland, Oregon. Refined continuously rather than released seasonally — never in batches, never rushed.</p>"
+            "text": "<p>Made to order in Portland, Oregon. Refined continuously rather than released seasonally.</p>"
           }
         },
         "button_LkER7J": {
@@ -107,7 +106,7 @@
         "asset_image": "md-spot-jean.jpg",
         "eyebrow": "CJ.101.1",
         "heading": "The Cowboy Jean",
-        "text": "<p>A high rise and a subtle flare, cut for a strong silhouette. Raw American denim, sewn one pair at a time.</p>",
+        "text": "<p>A high rise and a subtle flare. Raw American denim.</p>",
         "button_label": "Shop the Cowboy Jean",
         "reverse": false,
         "color_scheme": "scheme-2"
@@ -120,7 +119,7 @@
         "asset_image": "md-spot-shirt.jpg",
         "eyebrow": "WS.101.1",
         "heading": "The Western Shirt",
-        "text": "<p>Sharp yokes and a long point collar in raw indigo denim. Built to wear in, not wear out.</p>",
+        "text": "<p>Sharp yokes and a long point collar in raw indigo denim.</p>",
         "button_label": "Shop the Western Shirt",
         "reverse": true,
         "color_scheme": "scheme-1"
@@ -292,7 +291,7 @@
         "news_text": {
           "type": "paragraph",
           "settings": {
-            "text": "<p>Occasional updates from the workshop. No noise.</p>"
+            "text": "<p>Occasional updates from the workshop.</p>"
           }
         },
         "news_form": {
