@@ -56,7 +56,6 @@
       "block_order": ["phrase_1", "phrase_2", "phrase_3"],
       "settings": {
         "color_scheme": "scheme-5",
-        "speed": 35,
         "text_size": 1.5,
         "padding_vertical": 14
       }
@@ -74,7 +73,7 @@
         "text_dK3Ym9": {
           "type": "text",
           "settings": {
-            "text": "<p>Made to order in Portland, Oregon. Refined continuously rather than released seasonally.</p>"
+            "text": "<p>Made to order in Portland, Oregon. Refined continuously rather than seasonally.</p>"
           }
         },
         "button_LkER7J": {
@@ -272,7 +271,7 @@
       "block_order": ["quote_1", "quote_2", "quote_3", "quote_4", "quote_5"],
       "settings": {
         "heading": "Reviews",
-        "columns": 3,
+        "per_view": 3,
         "color_scheme": "scheme-2",
         "padding_top": 60,
         "padding_bottom": 72

@@ -2,46 +2,42 @@
 
 {%- style -%}
   .md-marquee-{{ section.id }} {
-    overflow: hidden;
-    white-space: nowrap;
     border-top: 1px solid rgba(var(--color-foreground), 0.15);
     border-bottom: 1px solid rgba(var(--color-foreground), 0.15);
-    padding: {{ section.settings.padding_vertical }}px 0;
+    padding: {{ section.settings.padding_vertical }}px 2rem;
   }
-  .md-marquee-{{ section.id }} .md-marquee__track {
-    display: inline-block;
-    animation: md-marquee-scroll-{{ section.id }} {{ section.settings.speed }}s linear infinite;
+  .md-marquee-{{ section.id }} .md-marquee__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    column-gap: clamp(1.6rem, 4vw, 5rem);
+    row-gap: 0.8rem;
   }
   .md-marquee-{{ section.id }} .md-marquee__item {
-    display: inline-block;
     font-family: var(--font-heading-family);
     font-size: {{ section.settings.text_size }}rem;
     letter-spacing: 0.14em;
     text-transform: uppercase;
-    padding: 0 2.4rem;
   }
   .md-marquee-{{ section.id }} .md-marquee__sep {
-    display: inline-block;
     opacity: 0.45;
   }
-  @keyframes md-marquee-scroll-{{ section.id }} {
-    from { transform: translateX(0); }
-    to { transform: translateX(-50%); }
-  }
-  @media (prefers-reduced-motion: reduce) {
-    .md-marquee-{{ section.id }} .md-marquee__track { animation: none; }
+  @media screen and (max-width: 749px) {
+    .md-marquee-{{ section.id }} .md-marquee__item {
+      font-size: {{ section.settings.text_size | times: 0.8 }}rem;
+      letter-spacing: 0.1em;
+    }
   }
 {%- endstyle -%}
 
 <div class="md-marquee-{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
-  <div class="md-marquee__track" aria-hidden="false">
-    {%- for i in (1..2) -%}
-      <span {% if i == 2 %}aria-hidden="true"{% endif %}>
-        {%- for block in section.blocks -%}
-          <span class="md-marquee__item" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</span
-          ><span class="md-marquee__sep">&#9671;</span>
-        {%- endfor -%}
-      </span>
+  <div class="md-marquee__row">
+    {%- for block in section.blocks -%}
+      <span class="md-marquee__item" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</span>
+      {%- unless forloop.last -%}
+        <span class="md-marquee__sep" aria-hidden="true">&#9671;</span>
+      {%- endunless -%}
     {%- endfor -%}
   </div>
 </div>
@@ -57,16 +53,6 @@
       "id": "color_scheme",
       "label": "Color scheme",
       "default": "scheme-5"
-    },
-    {
-      "type": "range",
-      "id": "speed",
-      "min": 10,
-      "max": 80,
-      "step": 5,
-      "unit": "s",
-      "label": "Scroll duration",
-      "default": 35
     },
     {
       "type": "range",

@@ -61,10 +61,3 @@ summary.header__menu-item,
 .card--standard .card__media .media img {
   object-fit: cover;
 }
-
-/* ---- Subtle motion restraint ---- */
-@media (prefers-reduced-motion: reduce) {
-  .md-marquee__track {
-    animation: none !important;
-  }
-}
