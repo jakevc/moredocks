@@ -120,28 +120,32 @@
       "type": "editorial-spotlight",
       "settings": {
         "product": "cj-101-1",
+        "image": "shopify://shop_images/md-spot-jean.jpg",
+        "asset_image": "",
+        "alt": "Cowboy jean and denim shirt worn against a concrete wall in hard afternoon light",
         "eyebrow": "CJ.101.1",
         "heading": "The Cowboy Jean",
-        "text": "<p>A high rise and a subtle flare. Raw American denim.</p>",
+        "text": "<p>High rise. Subtle flare.</p>",
         "button_label": "Shop the Cowboy Jean",
+        "button_link": "",
         "reverse": false,
-        "color_scheme": "scheme-2",
-        "image": "shopify://shop_images/md-spot-jean.jpg",
-        "alt": "Cowboy jean and denim shirt worn against a concrete wall in hard afternoon light"
+        "color_scheme": "scheme-2"
       }
     },
     "spotlight_shirt": {
       "type": "editorial-spotlight",
       "settings": {
         "product": "western-shirt",
+        "image": "shopify://shop_images/md-spot-shirt.jpg",
+        "asset_image": "",
+        "alt": "Close detail of the western shirt's pearl snap placket and contrast stitching",
         "eyebrow": "WS.101.1",
         "heading": "The Western Shirt",
         "text": "<p>Sharp yokes and a long point collar in raw indigo denim.</p>",
         "button_label": "Shop the Western Shirt",
+        "button_link": "",
         "reverse": true,
-        "color_scheme": "scheme-1",
-        "image": "shopify://shop_images/md-spot-shirt.jpg",
-        "alt": "Close detail of the western shirt's pearl snap placket and contrast stitching"
+        "color_scheme": "scheme-1"
       }
     },
     "featured_collection": {
@@ -178,43 +182,49 @@
         "rail_1": {
           "type": "photo",
           "settings": {
-            "alt": "Western shirt and cowboy jean at golden hour",
-            "image": "shopify://shop_images/md-rail-01.jpg"
+            "image": "shopify://shop_images/md-rail-01.jpg",
+            "asset_image": "",
+            "alt": "Western shirt and cowboy jean at golden hour"
           }
         },
         "rail_2": {
           "type": "photo",
           "settings": {
-            "alt": "Cowboy jean over western boots",
-            "image": "shopify://shop_images/md-rail-02.jpg"
+            "image": "shopify://shop_images/md-rail-02.jpg",
+            "asset_image": "",
+            "alt": "Cowboy jean over western boots"
           }
         },
         "rail_3": {
           "type": "photo",
           "settings": {
-            "alt": "Seated on the red curb in full denim",
-            "image": "shopify://shop_images/md-rail-03.jpg"
+            "image": "shopify://shop_images/md-rail-03.jpg",
+            "asset_image": "",
+            "alt": "Seated on the red curb in full denim"
           }
         },
         "rail_4": {
           "type": "photo",
           "settings": {
-            "alt": "Western shirt against jasmine",
-            "image": "shopify://shop_images/md-rail-04.jpg"
+            "image": "shopify://shop_images/md-rail-04.jpg",
+            "asset_image": "",
+            "alt": "Western shirt against jasmine"
           }
         },
         "rail_5": {
           "type": "photo",
           "settings": {
-            "alt": "Denim western shirt, downtown",
-            "image": "shopify://shop_images/md-rail-05.jpg"
+            "image": "shopify://shop_images/md-rail-05.jpg",
+            "asset_image": "",
+            "alt": "Denim western shirt, downtown"
           }
         },
         "rail_6": {
           "type": "photo",
           "settings": {
-            "alt": "Full silhouette against jasmine wall",
-            "image": "shopify://shop_images/md-rail-06.jpg"
+            "image": "shopify://shop_images/md-rail-06.jpg",
+            "asset_image": "",
+            "alt": "Full silhouette against jasmine wall"
           }
         }
       },
