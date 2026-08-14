@@ -9,14 +9,14 @@
  */
 {
   "current": {
-    "logo": "shopify://shop_images/Moredocks_Wordmark_Black.png",
-    "logo_width": 100,
+    "logo": "shopify://shop_images/Moredocks_Logo_Horizontal_Black.svg",
+    "logo_width": 200,
     "favicon": "shopify://shop_images/Moredocks_Logo_Icon_Black.svg",
-    "type_header_font": "serif",
-    "heading_scale": 100,
+    "type_header_font": "ebgaramond_n4",
+    "heading_scale": 115,
     "type_body_font": "assistant_n4",
     "body_scale": 100,
-    "page_width": 1200,
+    "page_width": 1600,
     "spacing_sections": 0,
     "spacing_grid_horizontal": 8,
     "spacing_grid_vertical": 8,
@@ -31,7 +31,7 @@
     "buttons_shadow_blur": 5,
     "variant_pills_border_thickness": 1,
     "variant_pills_border_opacity": 55,
-    "variant_pills_radius": 40,
+    "variant_pills_radius": 0,
     "variant_pills_shadow_opacity": 0,
     "variant_pills_shadow_horizontal_offset": 0,
     "variant_pills_shadow_vertical_offset": 4,
@@ -104,7 +104,7 @@
     "drawer_shadow_vertical_offset": 4,
     "drawer_shadow_blur": 5,
     "badge_position": "bottom left",
-    "badge_corner_radius": 40,
+    "badge_corner_radius": 0,
     "sale_badge_color_scheme": "scheme-4",
     "sold_out_badge_color_scheme": "scheme-3",
     "brand_headline": "",
@@ -154,57 +154,57 @@
     "color_schemes": {
       "scheme-1": {
         "settings": {
-          "background": "#ffffff",
+          "background": "#f6f3ea",
           "background_gradient": "",
-          "text": "#121212",
-          "button": "#121212",
-          "button_label": "#ffffff",
-          "secondary_button_label": "#121212",
-          "shadow": "#121212"
+          "text": "#26221b",
+          "button": "#4d4832",
+          "button_label": "#f6f3ea",
+          "secondary_button_label": "#26221b",
+          "shadow": "#26221b"
         }
       },
       "scheme-2": {
         "settings": {
-          "background": "#f3f3f3",
+          "background": "#ebe7d9",
           "background_gradient": "",
-          "text": "#121212",
-          "button": "#121212",
-          "button_label": "#f3f3f3",
-          "secondary_button_label": "#121212",
-          "shadow": "#121212"
+          "text": "#26221b",
+          "button": "#4d4832",
+          "button_label": "#f6f3ea",
+          "secondary_button_label": "#26221b",
+          "shadow": "#26221b"
         }
       },
       "scheme-3": {
         "settings": {
-          "background": "#242833",
+          "background": "#4d4832",
           "background_gradient": "",
-          "text": "#ffffff",
-          "button": "#ffffff",
-          "button_label": "#000000",
-          "secondary_button_label": "#ffffff",
-          "shadow": "#121212"
+          "text": "#f6f3ea",
+          "button": "#f6f3ea",
+          "button_label": "#4d4832",
+          "secondary_button_label": "#f6f3ea",
+          "shadow": "#26221b"
         }
       },
       "scheme-4": {
         "settings": {
-          "background": "#121212",
+          "background": "#5a190e",
           "background_gradient": "",
-          "text": "#ffffff",
-          "button": "#ffffff",
-          "button_label": "#121212",
-          "secondary_button_label": "#ffffff",
-          "shadow": "#121212"
+          "text": "#f6f3ea",
+          "button": "#bba062",
+          "button_label": "#26221b",
+          "secondary_button_label": "#f6f3ea",
+          "shadow": "#26221b"
         }
       },
       "scheme-5": {
         "settings": {
-          "background": "#334fb4",
+          "background": "#bba062",
           "background_gradient": "",
-          "text": "#ffffff",
-          "button": "#ffffff",
-          "button_label": "#334fb4",
-          "secondary_button_label": "#ffffff",
-          "shadow": "#121212"
+          "text": "#26221b",
+          "button": "#26221b",
+          "button_label": "#f6f3ea",
+          "secondary_button_label": "#26221b",
+          "shadow": "#26221b"
         }
       }
     }

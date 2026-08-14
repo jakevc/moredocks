@@ -1,0 +1,63 @@
+/* Moredocks theme overhaul — custom refinements
+   Palette lives in config/settings_data.json as scheme-1..5:
+   cream #f6f3ea, oatmeal #ebe7d9, ink #26221b, olive #4d4832,
+   oxblood #5a190e, brass #bba062 */
+
+/* ---- Full-width desktop layout: navbar spans the whole viewport ---- */
+.header-wrapper .page-width,
+.section-header .page-width {
+  max-width: none;
+}
+
+@media screen and (min-width: 990px) {
+  .header-wrapper .page-width {
+    padding-left: 4rem;
+    padding-right: 4rem;
+  }
+}
+
+/* ---- Typography: quiet, editorial ---- */
+h1, h2, h3, .h0, .h1, .h2, .h3 {
+  letter-spacing: 0.01em;
+}
+
+.banner__heading {
+  letter-spacing: 0.015em;
+}
+
+/* Uppercase, letterspaced eyebrow-style buttons and nav */
+.button,
+.shopify-challenge__button,
+.customer button {
+  text-transform: uppercase;
+  letter-spacing: 0.12em;
+  font-size: 1.2rem;
+}
+
+summary.header__menu-item,
+.header__menu-item {
+  text-transform: uppercase;
+  letter-spacing: 0.1em;
+  font-size: 1.2rem;
+}
+
+/* Product cards: normalize gallery crops so the catalogue reads as one set */
+.card--standard .card__media .media img {
+  object-fit: cover;
+}
+
+/* ---- Product gallery: one frame for the detail grid ----
+   Dawn sizes each media slot from its own image (--preview-ratio), so a 3:2
+   detail next to a 2:3 shot leaves the grid staggered. Pin the secondary
+   media to the site's 4:5 — .media > img is already object-fit: cover.
+   The first media keeps its natural ratio so a full-length shot doesn't
+   lose its head or feet. */
+.product__media-item:not(:first-child) .product-media-container {
+  --aspect-ratio: 0.8;
+}
+
+/* constrain-height clamps padding-top to a px height, which would round the
+   4:5 off on shorter viewports. Secondary media are small enough not to need it. */
+.product__media-item:not(:first-child) .product-media-container.constrain-height .media {
+  padding-top: var(--ratio-percent);
+}

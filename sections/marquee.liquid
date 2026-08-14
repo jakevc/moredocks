@@ -1,0 +1,113 @@
+{{ 'moredocks-custom.css' | asset_url | stylesheet_tag }}
+
+{%- style -%}
+  .md-marquee-{{ section.id }} {
+    border-top: 1px solid rgba(var(--color-foreground), 0.15);
+    border-bottom: 1px solid rgba(var(--color-foreground), 0.15);
+    padding: {{ section.settings.padding_vertical }}px 2rem;
+  }
+  .md-marquee-{{ section.id }} .md-marquee__row {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    column-gap: clamp(1.6rem, 4vw, 5rem);
+    row-gap: 0.8rem;
+  }
+  .md-marquee-{{ section.id }} .md-marquee__item {
+    font-family: var(--font-heading-family);
+    font-size: {{ section.settings.text_size }}rem;
+    letter-spacing: 0.14em;
+    text-transform: uppercase;
+  }
+  .md-marquee-{{ section.id }} .md-marquee__sep {
+    opacity: 0.45;
+  }
+  /* Stack on mobile. Wrapping mid-row leaves a separator orphaned at the
+     end of a line, so drop the diamonds and give each phrase its own. */
+  @media screen and (max-width: 749px) {
+    .md-marquee-{{ section.id }} .md-marquee__row {
+      flex-direction: column;
+      row-gap: 0.6rem;
+    }
+    .md-marquee-{{ section.id }} .md-marquee__sep {
+      display: none;
+    }
+    .md-marquee-{{ section.id }} .md-marquee__item {
+      font-size: {{ section.settings.text_size | times: 0.8 }}rem;
+      letter-spacing: 0.1em;
+    }
+  }
+{%- endstyle -%}
+
+<div class="md-marquee-{{ section.id }} color-{{ section.settings.color_scheme }} gradient">
+  <div class="md-marquee__row">
+    {%- for block in section.blocks -%}
+      <span class="md-marquee__item" {{ block.shopify_attributes }}>{{ block.settings.text | escape }}</span>
+      {%- unless forloop.last -%}
+        <span class="md-marquee__sep" aria-hidden="true">&#9671;</span>
+      {%- endunless -%}
+    {%- endfor -%}
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Marquee",
+  "tag": "section",
+  "class": "section",
+  "settings": [
+    {
+      "type": "color_scheme",
+      "id": "color_scheme",
+      "label": "Color scheme",
+      "default": "scheme-5"
+    },
+    {
+      "type": "range",
+      "id": "text_size",
+      "min": 1.2,
+      "max": 3,
+      "step": 0.1,
+      "unit": "rem",
+      "label": "Text size",
+      "default": 1.5
+    },
+    {
+      "type": "range",
+      "id": "padding_vertical",
+      "min": 4,
+      "max": 40,
+      "step": 2,
+      "unit": "px",
+      "label": "Vertical padding",
+      "default": 14
+    }
+  ],
+  "blocks": [
+    {
+      "type": "phrase",
+      "name": "Phrase",
+      "settings": [
+        {
+          "type": "text",
+          "id": "text",
+          "label": "Text",
+          "default": "Made to order"
+        }
+      ]
+    }
+  ],
+  "max_blocks": 8,
+  "presets": [
+    {
+      "name": "Marquee",
+      "blocks": [
+        { "type": "phrase", "settings": { "text": "Made to order" } },
+        { "type": "phrase", "settings": { "text": "Portland, Oregon" } },
+        { "type": "phrase", "settings": { "text": "American garments" } }
+      ]
+    }
+  ]
+}
+{% endschema %}

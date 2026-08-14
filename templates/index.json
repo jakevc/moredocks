@@ -11,18 +11,67 @@
   "sections": {
     "image_banner": {
       "type": "image-banner",
+      "blocks": {
+        "hero_buttons": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop the Catalogue",
+            "button_link_1": "shopify://collections/core",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "hero_buttons"
+      ],
       "settings": {
         "image": "shopify://shop_images/Moredocks-24.jpg",
-        "image_overlay_opacity": 0,
-        "image_height": "adapt",
+        "image_overlay_opacity": 20,
+        "image_height": "large",
         "image_behavior": "none",
-        "desktop_content_position": "top-left",
-        "desktop_content_alignment": "center",
+        "desktop_content_position": "bottom-left",
+        "desktop_content_alignment": "left",
         "show_text_box": false,
         "color_scheme": "scheme-3",
         "stack_images_on_mobile": false,
-        "mobile_content_alignment": "center",
+        "mobile_content_alignment": "left",
         "show_text_below": false
+      }
+    },
+    "marquee_ticker": {
+      "type": "marquee",
+      "blocks": {
+        "phrase_1": {
+          "type": "phrase",
+          "settings": {
+            "text": "Made to order"
+          }
+        },
+        "phrase_2": {
+          "type": "phrase",
+          "settings": {
+            "text": "Portland, Oregon"
+          }
+        },
+        "phrase_3": {
+          "type": "phrase",
+          "settings": {
+            "text": "American garments"
+          }
+        }
+      },
+      "block_order": [
+        "phrase_1",
+        "phrase_2",
+        "phrase_3"
+      ],
+      "settings": {
+        "color_scheme": "scheme-5",
+        "text_size": 1.5,
+        "padding_vertical": 14
       }
     },
     "rich_text_rWKBWt": {
@@ -31,14 +80,14 @@
         "heading_XiYewX": {
           "type": "heading",
           "settings": {
-            "heading": "American garments with a strong silhouette",
-            "heading_size": "h2"
+            "heading": "Built one at a time",
+            "heading_size": "h1"
           }
         },
         "text_dK3Ym9": {
           "type": "text",
           "settings": {
-            "text": "<p>Produced one at a time in Portland, Oregon. Refined continuously rather than released seasonally.</p>"
+            "text": "<p>Made to order in Portland, Oregon. Refined continuously rather than seasonally.</p>"
           }
         },
         "button_LkER7J": {
@@ -58,20 +107,47 @@
         "text_dK3Ym9",
         "button_LkER7J"
       ],
-      "name": "t:sections.rich-text.presets.name",
       "settings": {
         "desktop_content_position": "center",
         "content_alignment": "center",
-        "color_scheme": "",
+        "color_scheme": "scheme-1",
         "full_width": true,
-        "padding_top": 40,
-        "padding_bottom": 52
+        "padding_top": 64,
+        "padding_bottom": 64
+      }
+    },
+    "spotlight_jean": {
+      "type": "editorial-spotlight",
+      "settings": {
+        "product": "cj-101-1",
+        "eyebrow": "CJ.101.1",
+        "heading": "The Cowboy Jean",
+        "text": "<p>A high rise and a subtle flare. Raw American denim.</p>",
+        "button_label": "Shop the Cowboy Jean",
+        "reverse": false,
+        "color_scheme": "scheme-2",
+        "image": "shopify://shop_images/md-spot-jean.jpg",
+        "alt": "Cowboy jean and denim shirt worn against a concrete wall in hard afternoon light"
+      }
+    },
+    "spotlight_shirt": {
+      "type": "editorial-spotlight",
+      "settings": {
+        "product": "western-shirt",
+        "eyebrow": "WS.101.1",
+        "heading": "The Western Shirt",
+        "text": "<p>Sharp yokes and a long point collar in raw indigo denim.</p>",
+        "button_label": "Shop the Western Shirt",
+        "reverse": true,
+        "color_scheme": "scheme-1",
+        "image": "shopify://shop_images/md-spot-shirt.jpg",
+        "alt": "Close detail of the western shirt's pearl snap placket and contrast stitching"
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "collection": "all",
+        "collection": "core",
         "products_to_show": 2,
         "title": "Catalogue",
         "heading_size": "h2",
@@ -80,13 +156,13 @@
         "description_style": "body",
         "columns_desktop": 2,
         "enable_desktop_slider": false,
-        "full_width": false,
+        "full_width": true,
         "show_view_all": true,
-        "view_all_style": "solid",
+        "view_all_style": "outline",
         "color_scheme": "scheme-1",
-        "image_ratio": "adapt",
+        "image_ratio": "portrait",
         "image_shape": "default",
-        "show_secondary_image": false,
+        "show_secondary_image": true,
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
@@ -94,6 +170,68 @@
         "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
+      }
+    },
+    "photo_rail": {
+      "type": "photo-rail",
+      "blocks": {
+        "rail_1": {
+          "type": "photo",
+          "settings": {
+            "alt": "Western shirt and cowboy jean at golden hour",
+            "image": "shopify://shop_images/md-rail-01.jpg"
+          }
+        },
+        "rail_2": {
+          "type": "photo",
+          "settings": {
+            "alt": "Cowboy jean over western boots",
+            "image": "shopify://shop_images/md-rail-02.jpg"
+          }
+        },
+        "rail_3": {
+          "type": "photo",
+          "settings": {
+            "alt": "Seated on the red curb in full denim",
+            "image": "shopify://shop_images/md-rail-03.jpg"
+          }
+        },
+        "rail_4": {
+          "type": "photo",
+          "settings": {
+            "alt": "Western shirt against jasmine",
+            "image": "shopify://shop_images/md-rail-04.jpg"
+          }
+        },
+        "rail_5": {
+          "type": "photo",
+          "settings": {
+            "alt": "Denim western shirt, downtown",
+            "image": "shopify://shop_images/md-rail-05.jpg"
+          }
+        },
+        "rail_6": {
+          "type": "photo",
+          "settings": {
+            "alt": "Full silhouette against jasmine wall",
+            "image": "shopify://shop_images/md-rail-06.jpg"
+          }
+        }
+      },
+      "block_order": [
+        "rail_1",
+        "rail_2",
+        "rail_3",
+        "rail_4",
+        "rail_5",
+        "rail_6"
+      ],
+      "settings": {
+        "heading": "",
+        "per_view": 4,
+        "color_scheme": "scheme-1",
+        "padding_top": 8,
+        "padding_bottom": 8
       }
     },
     "multicolumn_A6rYVc": {
@@ -128,105 +266,133 @@
       "settings": {
         "title": "Press",
         "heading_size": "h2",
-        "image_width": "full",
+        "image_width": "half",
         "image_ratio": "adapt",
         "button_label": "",
         "button_link": "",
-        "columns_desktop": 4,
+        "columns_desktop": 2,
         "column_alignment": "left",
-        "background_style": "primary",
-        "color_scheme": "",
+        "background_style": "none",
+        "color_scheme": "scheme-2",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "padding_top": 60,
+        "padding_bottom": 60
       }
     },
-    "multicolumn_htqCFU": {
-      "type": "multicolumn",
+    "reviews_quotes": {
+      "type": "testimonials",
       "blocks": {
-        "column_V9ArRx": {
-          "type": "column",
+        "quote_1": {
+          "type": "quote",
           "settings": {
+            "quote": "<p>\"There's a lot I love about these jeans but the two things that I particularly am stoked about are 1) high-rise and subtle flared silhouette and 2) the retro colour of indigo denim. Super excited to see how this pair will age over time as well.\"</p>",
+            "author": "@amekajihead",
+            "link": "https://www.instagram.com/amekajihead/",
             "image": "shopify://shop_images/IMG_8626.jpg",
-            "title": "<strong>@</strong><a href=\"https://www.instagram.com/amekajihead/?hl=en#\"><strong>amekajihead</strong></a>",
-            "text": "<p>\"There’s a lot I love about these jeans but the two things that I particularly am stoked about are 1) high-rise and subtle flared silhouette and 2) the retro colour of indigo denim. Super excited to see how this pair will age over time as well.\"</p>",
-            "link_label": "",
-            "link": ""
+            "show_image": true
           }
         },
-        "column_bEAwka": {
-          "type": "column",
+        "quote_2": {
+          "type": "quote",
           "settings": {
+            "quote": "<p>\"The best fitting jeans I own. Did I mention how good these look with tailoring?\"</p>",
+            "author": "@nickelcobalt",
+            "link": "https://www.instagram.com/nickelcobalt/",
             "image": "shopify://shop_images/CB50FFF9-4422-4C27-BC84-FCE263ED35CF.jpg",
-            "title": "<strong>@</strong><a href=\"https://www.instagram.com/nickelcobalt/?hl=en#\"><strong>nickelcobalt</strong></a>",
-            "text": "<p>\"The best fitting jeans I own. Did I mention how good these look with tailoring?\"</p>",
-            "link_label": "",
-            "link": ""
+            "show_image": true
           }
         },
-        "column_Tetpd8": {
-          "type": "column",
+        "quote_3": {
+          "type": "quote",
           "settings": {
+            "quote": "<p>\"Anyone that has been following me for a while knows that I like 517 bootcuts from Levis... these are better. Very similar cut, but if you don't want to go into the mess of buying vintage, this is for you.\"</p>",
+            "author": "@lucasnicholson",
+            "link": "https://www.instagram.com/lucasnicholson/",
             "image": "shopify://shop_images/Screenshot_2026-06-10_at_9.43.14_AM.png",
-            "title": "<strong>@</strong><a href=\"https://www.instagram.com/lucasnicholson/?hl=en#\"><strong>lucasnicholson</strong></a>",
-            "text": "<p>\"Anyone that has been following me for a while knows that I like 517 bootcuts from Levis... these are better. Very similar cut, but if you don't want to go into the mess of buying vintage, this is for you.\"</p>",
-            "link_label": "",
-            "link": ""
+            "show_image": true
           }
         },
-        "column_BUFmq3": {
-          "type": "column",
+        "quote_4": {
+          "type": "quote",
           "settings": {
+            "quote": "<p>\"These are upscale with the classic 70's silhouette that I love. Just a beautiful pair of jeans.\"</p>",
+            "author": "@mrwardstyle",
+            "link": "https://www.instagram.com/mrwardstyle/",
             "image": "shopify://shop_images/B091C659-9FF8-485C-AE73-DC3B6E51ABFD.jpg",
-            "title": "<a href=\"https://www.instagram.com/lucasnicholson/?hl=en#\"><strong>@mrwardstyle</strong></a>",
-            "text": "<p>\"These are upscale with the classic 70's silhouette that I love. Just a beautiful pair of jeans.\"</p>",
-            "link_label": "",
-            "link": ""
+            "show_image": true
           }
         },
-        "column_JDW4qP": {
-          "type": "column",
+        "quote_5": {
+          "type": "quote",
           "settings": {
+            "quote": "<p>\"It starts slimmer and as you wear them they don't get baggy. The quality feels sturdy and will remain so after hard wearing.\"</p>",
+            "author": "@m.p.carter_",
+            "link": "http://www.instagram.com/m.p.carter_/",
             "image": "shopify://shop_images/B9AAB356-8EEF-4134-B0AA-E5EC9BD2CE88.jpg",
-            "title": "<a href=\"http://www.instagram.com/m.p.carter_/?hl=en\" title=\"@m.p.carter_\"><strong>@m.p.carter_</strong></a>",
-            "text": "<p>\"It starts slimmer and as you wear them they don’t get baggy. The quality feels sturdy and will remain so after hard wearing.\"</p>",
-            "link_label": "",
-            "link": ""
+            "show_image": true
           }
         }
       },
       "block_order": [
-        "column_V9ArRx",
-        "column_bEAwka",
-        "column_Tetpd8",
-        "column_BUFmq3",
-        "column_JDW4qP"
+        "quote_1",
+        "quote_2",
+        "quote_3",
+        "quote_4",
+        "quote_5"
       ],
-      "name": "t:sections.multicolumn.presets.name",
       "settings": {
-        "title": "Reviews",
-        "heading_size": "h2",
-        "image_width": "full",
-        "image_ratio": "adapt",
-        "button_label": "",
-        "button_link": "",
-        "columns_desktop": 5,
-        "column_alignment": "left",
-        "background_style": "primary",
-        "color_scheme": "",
-        "columns_mobile": "1",
-        "swipe_on_mobile": true,
-        "padding_top": 36,
-        "padding_bottom": 36
+        "heading": "Reviews",
+        "per_view": 3,
+        "color_scheme": "scheme-2",
+        "padding_top": 60,
+        "padding_bottom": 72
+      }
+    },
+    "newsletter_signup": {
+      "type": "newsletter",
+      "blocks": {
+        "news_heading": {
+          "type": "heading",
+          "settings": {
+            "heading": "Join the list",
+            "heading_size": "h1"
+          }
+        },
+        "news_text": {
+          "type": "paragraph",
+          "settings": {
+            "text": "<p>Occasional updates from the workshop.</p>"
+          }
+        },
+        "news_form": {
+          "type": "email_form",
+          "settings": {}
+        }
+      },
+      "block_order": [
+        "news_heading",
+        "news_text",
+        "news_form"
+      ],
+      "settings": {
+        "color_scheme": "scheme-3",
+        "full_width": true,
+        "padding_top": 72,
+        "padding_bottom": 80
       }
     }
   },
   "order": [
     "image_banner",
+    "marquee_ticker",
     "rich_text_rWKBWt",
+    "spotlight_jean",
+    "spotlight_shirt",
     "featured_collection",
+    "photo_rail",
     "multicolumn_A6rYVc",
-    "multicolumn_htqCFU"
+    "reviews_quotes",
+    "newsletter_signup"
   ]
 }
