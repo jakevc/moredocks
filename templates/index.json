@@ -16,7 +16,7 @@
           "type": "buttons",
           "settings": {
             "button_label_1": "Shop the Catalogue",
-            "button_link_1": "shopify://collections/all",
+            "button_link_1": "shopify://collections/core",
             "button_style_secondary_1": false,
             "button_label_2": "",
             "button_link_2": "",
@@ -126,7 +126,8 @@
         "button_label": "Shop the Cowboy Jean",
         "reverse": false,
         "color_scheme": "scheme-2",
-        "image": "shopify://shop_images/md-spot-jean.jpg"
+        "image": "shopify://shop_images/md-spot-jean.jpg",
+        "alt": "Cowboy jean and denim shirt worn against a concrete wall in hard afternoon light"
       }
     },
     "spotlight_shirt": {
@@ -139,13 +140,14 @@
         "button_label": "Shop the Western Shirt",
         "reverse": true,
         "color_scheme": "scheme-1",
-        "image": "shopify://shop_images/md-spot-shirt.jpg"
+        "image": "shopify://shop_images/md-spot-shirt.jpg",
+        "alt": "Close detail of the western shirt's pearl snap placket and contrast stitching"
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
-        "collection": "all",
+        "collection": "core",
         "products_to_show": 2,
         "title": "Catalogue",
         "heading_size": "h2",

@@ -86,7 +86,13 @@
       <div class="md-quote" role="listitem" {{ block.shopify_attributes }}>
         <figure>
           {%- if block.settings.show_image and block.settings.image != blank -%}
-            {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', class: 'md-quote__img', sizes: sizes_attr, widths: '450, 700, 900' }}
+            {%- liquid
+              assign quote_alt = 'Moredocks garment worn by a customer'
+              if block.settings.author != blank
+                assign quote_alt = 'Moredocks garment worn by ' | append: block.settings.author
+              endif
+            -%}
+            {{ block.settings.image | image_url: width: 900 | image_tag: loading: 'lazy', alt: quote_alt, class: 'md-quote__img', sizes: sizes_attr, widths: '450, 700, 900' }}
           {%- endif -%}
           <blockquote>{{ block.settings.quote }}</blockquote>
           {%- if block.settings.author != blank -%}
