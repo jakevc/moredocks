@@ -55,18 +55,11 @@
           "settings": {
             "text": "Portland, Oregon"
           }
-        },
-        "phrase_3": {
-          "type": "phrase",
-          "settings": {
-            "text": "American garments"
-          }
         }
       },
       "block_order": [
         "phrase_1",
-        "phrase_2",
-        "phrase_3"
+        "phrase_2"
       ],
       "settings": {
         "color_scheme": "scheme-5",
