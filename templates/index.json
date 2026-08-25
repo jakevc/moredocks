@@ -125,36 +125,33 @@
         "color_scheme": "scheme-2"
       }
     },
-    "spotlight_shirt": {
+    "spotlight_coat": {
       "type": "editorial-spotlight",
       "settings": {
-        "product": "western-shirt",
-        "image": "shopify://shop_images/md-spot-shirt.jpg",
-        "asset_image": "",
-        "alt": "Close detail of the western shirt's pearl snap placket and contrast stitching",
-        "eyebrow": "WS.101.1",
-        "heading": "Western Shirt",
-        "text": "<p>Scalloped yoke. Sawtooth pockets.</p>",
-        "button_label": "Shop the Western Shirt",
-        "button_link": "",
+        "product": "cc-101-1-cowboy-coat",
+        "eyebrow": "CC.101.1",
+        "heading": "Cowboy Coat",
+        "text": "<p>Broad shoulder. Back cinch.</p>",
+        "button_label": "Shop the Cowboy Coat",
         "reverse": true,
-        "color_scheme": "scheme-1"
+        "color_scheme": "scheme-1",
+        "alt": "The cowboy coat worn open with the collar up, in a plain room"
       }
     },
     "featured_collection": {
       "type": "featured-collection",
       "settings": {
         "collection": "core",
-        "products_to_show": 2,
+        "products_to_show": 4,
         "title": "Catalogue",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "columns_desktop": 2,
+        "columns_desktop": 4,
         "enable_desktop_slider": false,
         "full_width": true,
-        "show_view_all": true,
+        "show_view_all": false,
         "view_all_style": "outline",
         "color_scheme": "scheme-1",
         "image_ratio": "portrait",
@@ -391,7 +388,7 @@
     "marquee_ticker",
     "rich_text_rWKBWt",
     "spotlight_jean",
-    "spotlight_shirt",
+    "spotlight_coat",
     "featured_collection",
     "photo_rail",
     "multicolumn_A6rYVc",
