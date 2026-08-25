@@ -124,7 +124,7 @@
               </div>
             </div>
             {%- endif -%}
-            {%- if product.tags contains 'shirt' -%}
+            {%- if product.tags contains 'shirt' or product.tags contains 'coat' -%}
             <div class="product-form__input product-form__input--dropdown">
               <label class="form__label" for="chest-size-{{ section_id }}">
                 {{ 'products.product.chest_size' | t | default: 'Chest size' }}
@@ -154,6 +154,7 @@
               </div>
             </div>
             {%- endif -%}
+
             <div class="product-form__input product-form__comments">
               <label class="form__label" for="order-comments-{{ section_id }}">
                 Comments
