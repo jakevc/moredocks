@@ -129,13 +129,15 @@
       "type": "editorial-spotlight",
       "settings": {
         "product": "cc-101-1-cowboy-coat",
+        "asset_image": "",
+        "alt": "The cowboy coat worn open with the collar up, in a plain room",
         "eyebrow": "CC.101.1",
         "heading": "Cowboy Coat",
-        "text": "<p>Broad shoulder. Back cinch.</p>",
+        "text": "<p>Pleated placket. Cinch back.</p>",
         "button_label": "Shop the Cowboy Coat",
+        "button_link": "",
         "reverse": true,
-        "color_scheme": "scheme-1",
-        "alt": "The cowboy coat worn open with the collar up, in a plain room"
+        "color_scheme": "scheme-1"
       }
     },
     "featured_collection": {
