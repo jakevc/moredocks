@@ -84,28 +84,11 @@
         "padding_top": 40,
         "padding_bottom": 52
       }
-    },
-    "image_banner_factory": {
-      "type": "image-banner",
-      "settings": {
-        "image": "shopify://shop_images/AW_Factory.jpg",
-        "image_overlay_opacity": 0,
-        "image_height": "medium",
-        "image_behavior": "none",
-        "desktop_content_position": "middle-center",
-        "desktop_content_alignment": "center",
-        "show_text_box": false,
-        "color_scheme": "",
-        "stack_images_on_mobile": true,
-        "mobile_content_alignment": "center",
-        "show_text_below": false
-      }
     }
   },
   "order": [
     "main",
     "image_banner_DD3PkM",
-    "rich_text_Bgid4t",
-    "image_banner_factory"
+    "rich_text_Bgid4t"
   ]
 }
