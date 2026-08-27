@@ -215,47 +215,75 @@
                             <button type="button" class="size-chart-unit-btn active" data-unit="in">in</button>
                             <button type="button" class="size-chart-unit-btn" data-unit="cm">cm</button>
                           </div>
-                          {%- assign size_chart_lines = product.metafields.custom.size_chart.value | strip | split: '
-' -%}
-                          <table>
-                            {%- for line in size_chart_lines -%}
-                              {%- assign trimmed_line = line | strip -%}
-                              {%- if trimmed_line == blank -%}
-                                {%- continue -%}
-                              {%- endif -%}
-                              {%- comment -%}Skip separator lines like |---|---|---| {%- endcomment -%}
-                              {%- assign stripped = trimmed_line | remove: '|' | remove: '-' | remove: ':' | strip -%}
-                              {%- if stripped == blank -%}
-                                {%- continue -%}
-                              {%- endif -%}
-                              {%- assign cells = trimmed_line | split: '|' -%}
-                              {%- if forloop.first -%}
-                                <thead><tr>
-                                  {%- for cell in cells -%}
+                          {%- liquid
+                            # Markdown-style table out of the product metafield.
+                            # Blank and |---|---| separator lines are filtered
+                            # out up front so <thead> and <tbody> can be emitted
+                            # unconditionally. Opening <tbody> inside the loop
+                            # left the tags unbalanced to any parser reading the
+                            # template statically, and emitted a stray </tbody>
+                            # whenever the first line happened to be skipped.
+                            assign size_chart_raw = product.metafields.custom.size_chart.value | strip | split: '
+'
+                            assign size_chart_rows = ''
+                            for line in size_chart_raw
+                              assign trimmed_line = line | strip
+                              if trimmed_line == blank
+                                continue
+                              endif
+                              assign stripped = trimmed_line | remove: '|' | remove: '-' | remove: ':' | strip
+                              if stripped == blank
+                                continue
+                              endif
+                              assign size_chart_rows = size_chart_rows | append: trimmed_line | append: '
+'
+                            endfor
+                            assign size_chart_rows = size_chart_rows | strip | split: '
+'
+                          -%}
+                          {%- if size_chart_rows.size > 0 -%}
+                            <table>
+                              <thead>
+                                <tr>
+                                  {%- assign header_cells = size_chart_rows[0] | split: '|' -%}
+                                  {%- for cell in header_cells -%}
                                     {%- assign cell_stripped = cell | strip -%}
                                     {%- if cell_stripped != blank -%}
                                       <th>{{ cell_stripped }}</th>
                                     {%- endif -%}
                                   {%- endfor -%}
-                                </tr></thead>
-                                <tbody>
-                              {%- else -%}
-                                <tr>
-                                  {%- for cell in cells -%}
-                                    {%- assign cell_stripped = cell | strip -%}
-                                    {%- if cell_stripped != blank -%}
-                                      {%- if forloop.first -%}
-                                        <td>{{ cell_stripped }}</td>
-                                      {%- else -%}
-                                        <td data-inches="{{ cell_stripped }}">{{ cell_stripped }}</td>
-                                      {%- endif -%}
-                                    {%- endif -%}
-                                  {%- endfor -%}
                                 </tr>
-                              {%- endif -%}
-                            {%- endfor -%}
-                            </tbody>
-                          </table>
+                              </thead>
+                              <tbody>
+                                {%- for line in size_chart_rows offset: 1 -%}
+                                  <tr>
+                                    {%- assign cells = line | split: '|' -%}
+                                    {%- comment -%}
+                                      Counts only non-blank cells. A leading "|"
+                                      makes split produce an empty first element,
+                                      so forloop.first landed on that instead of
+                                      the label column — which then got tagged
+                                      data-inches and was only spared conversion
+                                      because size-chart.js skips columns headed
+                                      "Size".
+                                    {%- endcomment -%}
+                                    {%- assign column = 0 -%}
+                                    {%- for cell in cells -%}
+                                      {%- assign cell_stripped = cell | strip -%}
+                                      {%- if cell_stripped != blank -%}
+                                        {%- if column == 0 -%}
+                                          <td>{{ cell_stripped }}</td>
+                                        {%- else -%}
+                                          <td data-inches="{{ cell_stripped }}">{{ cell_stripped }}</td>
+                                        {%- endif -%}
+                                        {%- assign column = column | plus: 1 -%}
+                                      {%- endif -%}
+                                    {%- endfor -%}
+                                  </tr>
+                                {%- endfor -%}
+                              </tbody>
+                            </table>
+                          {%- endif -%}
                         </div>
                       </div>
                     </details>
