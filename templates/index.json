@@ -28,7 +28,7 @@
         "hero_buttons"
       ],
       "settings": {
-        "video": "shopify://files/videos/Still Life Homepage.mov",
+        "video": "shopify://files/videos/still-life-hero-trimmed.mp4",
         "video_on_mobile": true,
         "image_overlay_opacity": 20,
         "image_height": "large",
