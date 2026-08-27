@@ -100,30 +100,37 @@
             section.settings.video
             | video_tag: image_size: '1100x', autoplay: true, loop: true, muted: true, controls: false
           }}
+          {%- comment -%}
+            This script has to live inside .banner__video, not as a sibling of
+            it. base.css gives every direct child of .media `display: block`,
+            which beats the browser's built-in `script { display: none }` — a
+            <script> placed directly under .banner__media renders its own source
+            as visible text across the hero.
+          {%- endcomment -%}
+          <script>
+            (function () {
+              var wrap = document.currentScript.parentElement;
+              var video = wrap && wrap.querySelector('video');
+              if (!video) return;
+
+              /* Liquid cannot see the viewport or the motion preference, and
+                 `display: none` still costs the full download. Removing the
+                 element from the parser's reach is what actually skips it. */
+              var blocked = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+                {%- unless section.settings.video_on_mobile %} || window.matchMedia('(max-width: 749px)').matches{% endunless %};
+              if (blocked) {
+                wrap.remove();
+                return;
+              }
+
+              var reveal = function () {
+                wrap.classList.add('banner__video--playing');
+              };
+              if (!video.paused && video.readyState > 2) reveal();
+              video.addEventListener('playing', reveal, { once: true });
+            })();
+          </script>
         </div>
-        <script>
-          (function () {
-            var wrap = document.currentScript.previousElementSibling;
-            var video = wrap && wrap.querySelector('video');
-            if (!video) return;
-
-            /* Liquid cannot see the viewport or the motion preference, and
-               `display: none` still costs the full download. Removing the
-               element from the parser's reach is what actually skips it. */
-            var blocked = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-              {%- unless section.settings.video_on_mobile %} || window.matchMedia('(max-width: 749px)').matches{% endunless %};
-            if (blocked) {
-              wrap.remove();
-              return;
-            }
-
-            var reveal = function () {
-              wrap.classList.add('banner__video--playing');
-            };
-            if (!video.paused && video.readyState > 2) reveal();
-            video.addEventListener('playing', reveal, { once: true });
-          })();
-        </script>
       {%- endif -%}
     </div>
   {%- elsif section.settings.image_2 == blank -%}
