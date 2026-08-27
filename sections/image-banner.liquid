@@ -109,51 +109,52 @@
       {%- endcomment -%}
       {%- if section.settings.video != blank -%}
         {%- comment -%}
-          Sources are picked by hand rather than via the video_tag filter. That
-          filter emits exactly one <source>, always the largest rendition, with
-          no way to influence the choice and no bandwidth adaptation — for this
-          clip that is 1080p at 7.2Mbps, 9.7MB, charged to every phone on
-          cellular. 720p covers the desktop hero (1440x720 after object-fit, so
-          1080p is wasted detail) at 6.0MB, and 480p covers the ~375x390 mobile
-          crop at 2.0MB.
+          Sources are picked by hand rather than via the video_tag filter, which
+          emits one <source> and always the largest rendition — for this clip
+          1080p at 7.2Mbps, 9.7MB, charged to every phone on cellular.
+
+          Liquid only exposes two of them, though: the HLS manifest and that one
+          1080p mp4. The 720p (6.0MB) and 480p (2.0MB) files do exist on the CDN
+          but video.sources does not list them, and deriving their URLs would
+          mean hardcoding Shopify's ladder labels and 404ing the day they move.
+
+          So HLS goes first where it is supported. Safari — every browser on
+          iOS, where the cellular cost actually lands — reads the manifest and
+          adapts down the ladder on its own. Chrome and Firefox cannot play HLS
+          and take the mp4. The "Play the video on mobile" toggle stays the hard
+          lever for anyone who wants phones to spend nothing.
 
           No poster and no <img> fallback: the banner still underneath already
-          fills that role, so either one would be a second download of a picture
+          fills that role, so either would be a second download of a picture
           nobody sees. aria-hidden because the clip is ambient and mute — it
           carries nothing a screen reader should announce.
         {%- endcomment -%}
         {%- liquid
           assign hero_video = section.settings.video
-          assign src_small = ''
-          assign height_small = 0
-          assign src_large = ''
-          assign height_large = 0
-          assign src_min = ''
-          assign height_min = 0
+          assign src_hls = ''
+          assign src_mp4 = ''
+          assign mp4_height = 0
           for source in hero_video.sources
+            if source.format == 'm3u8' and src_hls == blank
+              assign src_hls = source.url
+            endif
+            # Smallest mp4 that still covers the hero (720p+), else the largest
+            # on offer. Today that is the lone 1080p file either way, but it
+            # picks up a smaller one free if Shopify ever exposes the ladder.
             if source.format == 'mp4'
-              if src_min == blank or source.height < height_min
-                assign height_min = source.height
-                assign src_min = source.url
-              endif
-              if source.height <= 480 and source.height > height_small
-                assign height_small = source.height
-                assign src_small = source.url
-              endif
-              if source.height <= 720 and source.height > height_large
-                assign height_large = source.height
-                assign src_large = source.url
+              if src_mp4 == blank
+                assign src_mp4 = source.url
+                assign mp4_height = source.height
+              elsif mp4_height < 720 and source.height > mp4_height
+                assign src_mp4 = source.url
+                assign mp4_height = source.height
+              elsif source.height >= 720 and source.height < mp4_height
+                assign src_mp4 = source.url
+                assign mp4_height = source.height
               endif
             endif
           endfor
-          if src_large == blank
-            assign src_large = src_min
-          endif
-          if src_small == blank
-            assign src_small = src_min
-          endif
         -%}
-        <!-- MD-DEBUG sources: {% for source in hero_video.sources %}[{{ forloop.index }}] format={{ source.format }} mime={{ source.mime_type }} {{ source.width }}x{{ source.height }} {{ source.url }} {% endfor %} -->
         <div class="banner__video">
           <video
             playsinline
@@ -163,8 +164,8 @@
             preload="none"
             aria-hidden="true"
             tabindex="-1"
-            data-src-small="{{ src_small }}"
-            data-src-large="{{ src_large }}"
+            data-src-hls="{{ src_hls }}"
+            data-src-mp4="{{ src_mp4 }}"
           ></video>
           {%- comment -%}
             This script has to live inside .banner__video, not as a sibling of
@@ -193,7 +194,11 @@
                 return;
               }
 
-              var src = small.matches ? video.dataset.srcSmall : video.dataset.srcLarge;
+              /* canPlayType returns '' where HLS is unsupported, so Chrome and
+                 Firefox fall through to the mp4 while Safari takes the manifest
+                 and picks its own rung of the ladder. */
+              var hls = video.dataset.srcHls;
+              var src = hls && video.canPlayType('application/vnd.apple.mpegurl') ? hls : video.dataset.srcMp4;
               if (!src) return;
 
               video.addEventListener(
