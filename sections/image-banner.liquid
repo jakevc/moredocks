@@ -1,12 +1,25 @@
 {{ 'section-image-banner.css' | asset_url | stylesheet_tag }}
 
-{%- if section.settings.image_height == 'adapt' and section.settings.image != blank -%}
+{%- comment -%}
+  The still behind the banner. Normally the chosen image, but when a background
+  video is set with no image, Shopify's generated poster frame for that video
+  stands in — so the fallback matches the video's opening frame exactly and the
+  handoff to playback is invisible rather than a crossfade between two scenes.
+{%- endcomment -%}
+{%- liquid
+  assign banner_image = section.settings.image
+  if banner_image == blank and section.settings.video != blank
+    assign banner_image = section.settings.video.preview_image
+  endif
+-%}
+
+{%- if section.settings.image_height == 'adapt' and banner_image != blank -%}
   {%- style -%}
     @media screen and (max-width: 749px) {
       #Banner-{{ section.id }}::before,
       #Banner-{{ section.id }} .banner__media::before,
       #Banner-{{ section.id }}:not(.banner--mobile-bottom) .banner__content::before {
-        padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+        padding-bottom: {{ 1 | divided_by: banner_image.aspect_ratio | times: 100 }}%;
         content: '';
         display: block;
       }
@@ -15,7 +28,7 @@
     @media screen and (min-width: 750px) {
       #Banner-{{ section.id }}::before,
       #Banner-{{ section.id }} .banner__media::before {
-        padding-bottom: {{ 1 | divided_by: section.settings.image.aspect_ratio | times: 100 }}%;
+        padding-bottom: {{ 1 | divided_by: banner_image.aspect_ratio | times: 100 }}%;
         content: '';
         display: block;
       }
@@ -53,34 +66,160 @@
 
 <div
   id="Banner-{{ section.id }}"
-  class="banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
+  class="banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and banner_image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and banner_image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
 >
-  {%- if section.settings.image != blank -%}
-    <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      {%- liquid
-        assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
-        if section.settings.image_2 != blank
-          assign image_class = 'banner__media-image-half'
-        endif
-        if section.settings.image_2 != blank and section.settings.stack_images_on_mobile
-          assign sizes = stacked_sizes
-        elsif section.settings.image_2 != blank
-          assign sizes = half_width
-        else
-          assign sizes = full_width
-        endif
-      -%}
-      {{
-        section.settings.image
-        | image_url: width: 3840
-        | image_tag:
-          width: section.settings.image.width,
-          height: image_height,
-          class: image_class,
-          sizes: sizes,
-          widths: widths,
-          fetchpriority: fetch_priority
-      }}
+  {%- if banner_image != blank or section.settings.video != blank -%}
+    <div class="banner__media media{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      {%- if banner_image != blank -%}
+        {%- liquid
+          assign image_height = banner_image.width | divided_by: banner_image.aspect_ratio
+          if section.settings.image_2 != blank
+            assign image_class = 'banner__media-image-half'
+          endif
+          if section.settings.image_2 != blank and section.settings.stack_images_on_mobile
+            assign sizes = stacked_sizes
+          elsif section.settings.image_2 != blank
+            assign sizes = half_width
+          else
+            assign sizes = full_width
+          endif
+        -%}
+        {{
+          banner_image
+          | image_url: width: 3840
+          | image_tag:
+            width: banner_image.width,
+            height: image_height,
+            class: image_class,
+            sizes: sizes,
+            widths: widths,
+            fetchpriority: fetch_priority
+        }}
+      {%- endif -%}
+
+      {%- comment -%}
+        Optional background video, layered over the banner image.
+
+        The image is left exactly as it was — same markup, still fetchpriority
+        high — because it is the LCP paint and the fallback for every case where
+        autoplay is refused: iOS Low Power Mode, Data Saver, reduced motion, or
+        no JavaScript. The video sits on top at opacity 0 and only fades in once
+        playback has actually started, so a blocked video is invisible rather
+        than a black rectangle.
+      {%- endcomment -%}
+      {%- if section.settings.video != blank -%}
+        {%- comment -%}
+          Sources are picked by hand rather than via the video_tag filter, which
+          emits one <source> and always the largest rendition — for this clip
+          1080p at 7.2Mbps, 9.7MB, charged to every phone on cellular.
+
+          Liquid only exposes two of them, though: the HLS manifest and that one
+          1080p mp4. The 720p (6.0MB) and 480p (2.0MB) files do exist on the CDN
+          but video.sources does not list them, and deriving their URLs would
+          mean hardcoding Shopify's ladder labels and 404ing the day they move.
+
+          So HLS goes first where it is supported. Safari — every browser on
+          iOS, where the cellular cost actually lands — reads the manifest and
+          adapts down the ladder on its own. Chrome and Firefox cannot play HLS
+          and take the mp4. The "Play the video on mobile" toggle stays the hard
+          lever for anyone who wants phones to spend nothing.
+
+          No poster and no <img> fallback: the banner still underneath already
+          fills that role, so either would be a second download of a picture
+          nobody sees. aria-hidden because the clip is ambient and mute — it
+          carries nothing a screen reader should announce.
+        {%- endcomment -%}
+        {%- liquid
+          assign hero_video = section.settings.video
+          assign src_hls = ''
+          assign src_mp4 = ''
+          assign mp4_height = 0
+          for source in hero_video.sources
+            if source.format == 'm3u8' and src_hls == blank
+              assign src_hls = source.url
+            endif
+            # Smallest mp4 that still covers the hero (720p+), else the largest
+            # on offer. Today that is the lone 1080p file either way, but it
+            # picks up a smaller one free if Shopify ever exposes the ladder.
+            if source.format == 'mp4'
+              if src_mp4 == blank
+                assign src_mp4 = source.url
+                assign mp4_height = source.height
+              elsif mp4_height < 720 and source.height > mp4_height
+                assign src_mp4 = source.url
+                assign mp4_height = source.height
+              elsif source.height >= 720 and source.height < mp4_height
+                assign src_mp4 = source.url
+                assign mp4_height = source.height
+              endif
+            endif
+          endfor
+        -%}
+        <div class="banner__video">
+          <video
+            playsinline
+            muted
+            loop
+            autoplay
+            preload="none"
+            aria-hidden="true"
+            tabindex="-1"
+            data-src-hls="{{ src_hls }}"
+            data-src-mp4="{{ src_mp4 }}"
+          ></video>
+          {%- comment -%}
+            This script has to live inside .banner__video, not as a sibling of
+            it. base.css gives every direct child of .media `display: block`,
+            which beats the browser's built-in `script { display: none }` — a
+            <script> placed directly under .banner__media renders its own source
+            as visible text across the hero.
+          {%- endcomment -%}
+          <script>
+            (function () {
+              var wrap = document.currentScript.parentElement;
+              var video = wrap && wrap.querySelector('video');
+              if (!video) return;
+
+              var small = window.matchMedia('(max-width: 749px)');
+
+              /* The element ships with no src, so the browser downloads nothing
+                 until the line below. Liquid cannot see the viewport or the
+                 motion preference, and hiding the video with CSS would still
+                 cost the full file — withholding the src is what makes these
+                 visitors free rather than merely unbothered. */
+              var blocked = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+                {%- unless section.settings.video_on_mobile %} || small.matches{% endunless %};
+              if (blocked) {
+                wrap.remove();
+                return;
+              }
+
+              /* canPlayType returns '' where HLS is unsupported, so Chrome and
+                 Firefox fall through to the mp4 while Safari takes the manifest
+                 and picks its own rung of the ladder. */
+              var hls = video.dataset.srcHls;
+              var src = hls && video.canPlayType('application/vnd.apple.mpegurl') ? hls : video.dataset.srcMp4;
+              if (!src) return;
+
+              video.addEventListener(
+                'playing',
+                function () {
+                  wrap.classList.add('banner__video--playing');
+                },
+                { once: true }
+              );
+
+              video.muted = true;
+              video.src = src;
+
+              /* A refused autoplay rejects here. Swallow it: the banner still is
+                 already on screen and the video simply stays at opacity 0. */
+              var started = video.play();
+              if (started && started.catch) started.catch(function () {});
+            })();
+          </script>
+        </div>
+      {%- endif -%}
     </div>
   {%- elsif section.settings.image_2 == blank -%}
     <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
@@ -88,13 +227,13 @@
     </div>
   {%- endif -%}
   {%- if section.settings.image_2 != blank -%}
-    <div class="banner__media media{% if section.settings.image != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+    <div class="banner__media media{% if banner_image != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
       {%- liquid
         assign image_height_2 = section.settings.image_2.width | divided_by: section.settings.image_2.aspect_ratio
-        if section.settings.image != blank
+        if banner_image != blank
           assign image_class_2 = 'banner__media-image-half'
         endif
-        if section.settings.image != blank and section.settings.stack_images_on_mobile
+        if banner_image != blank and section.settings.stack_images_on_mobile
           assign sizes = stacked_sizes
         elsif section.settings.image_2 != blank
           assign sizes = half_width
@@ -184,6 +323,19 @@
       "type": "image_picker",
       "id": "image_2",
       "label": "t:sections.image-banner.settings.image_2.label"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Background video",
+      "info": "Plays muted and looping over the still above. Leave Image 1 empty to use the video's own first frame as that still — it shows while the video loads and whenever autoplay is blocked."
+    },
+    {
+      "type": "checkbox",
+      "id": "video_on_mobile",
+      "default": true,
+      "label": "Play the video on mobile",
+      "info": "Turn off to serve the image on phones instead. Saves the download on cellular."
     },
     {
       "type": "range",
