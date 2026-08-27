@@ -13,16 +13,47 @@
       "type": "video",
       "name": "t:sections.video.presets.name",
       "settings": {
-        "heading": "",
+        "heading": "Video",
         "heading_size": "h1",
-        "enable_video_looping": true,
-        "video": "shopify://files/videos/Still Life Homepage.mov",
+        "enable_video_looping": false,
         "video_url": "https://www.youtube.com/watch?v=_9VUPq3SxOc",
         "description": "",
-        "full_width": true,
+        "full_width": false,
         "color_scheme": "",
         "padding_top": 36,
         "padding_bottom": 36
+      }
+    },
+    "image_banner": {
+      "type": "image-banner",
+      "blocks": {
+        "hero_buttons": {
+          "type": "buttons",
+          "settings": {
+            "button_label_1": "Shop the Catalogue",
+            "button_link_1": "shopify://collections/core",
+            "button_style_secondary_1": false,
+            "button_label_2": "",
+            "button_link_2": "",
+            "button_style_secondary_2": false
+          }
+        }
+      },
+      "block_order": [
+        "hero_buttons"
+      ],
+      "settings": {
+        "image": "shopify://shop_images/Moredocks-24.jpg",
+        "image_overlay_opacity": 20,
+        "image_height": "large",
+        "image_behavior": "none",
+        "desktop_content_position": "bottom-left",
+        "desktop_content_alignment": "left",
+        "show_text_box": false,
+        "color_scheme": "scheme-3",
+        "stack_images_on_mobile": false,
+        "mobile_content_alignment": "left",
+        "show_text_below": false
       }
     },
     "marquee_ticker": {
@@ -371,6 +402,7 @@
   },
   "order": [
     "video_7eTGbJ",
+    "image_banner",
     "marquee_ticker",
     "rich_text_rWKBWt",
     "spotlight_jean",
