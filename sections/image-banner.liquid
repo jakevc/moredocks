@@ -153,6 +153,7 @@
             assign src_small = src_min
           endif
         -%}
+        <!-- MD-DEBUG sources: {% for source in hero_video.sources %}[{{ forloop.index }}] format={{ source.format }} mime={{ source.mime_type }} {{ source.width }}x{{ source.height }} {{ source.url }} {% endfor %} -->
         <div class="banner__video">
           <video
             playsinline
