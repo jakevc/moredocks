@@ -1,4 +1,9 @@
-{{ 'md-cart-line-properties.js' | asset_url | script_tag }}
+{%- comment -%}
+  Deferred rather than piped through script_tag, which emits a parser-blocking
+  <script src>. Everything in here binds delegated listeners on `document`, so
+  running after parse costs nothing.
+{%- endcomment -%}
+<script src="{{ 'md-cart-line-properties.js' | asset_url }}" defer="defer"></script>
 {{ 'component-cart.css' | asset_url | stylesheet_tag }}
 {{ 'component-cart-items.css' | asset_url | stylesheet_tag }}
 {{ 'component-totals.css' | asset_url | stylesheet_tag }}

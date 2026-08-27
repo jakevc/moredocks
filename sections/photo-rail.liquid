@@ -65,8 +65,6 @@
       <div class="md-rail__item" role="listitem" {{ block.shopify_attributes }}>
         {%- if block.settings.image != blank -%}
           {{ block.settings.image | image_url: width: 1200 | image_tag: loading: 'lazy', alt: block.settings.alt, sizes: sizes_attr, widths: '600, 900, 1200' }}
-        {%- elsif block.settings.asset_image != blank -%}
-          <img src="{{ block.settings.asset_image | asset_url }}" alt="{{ block.settings.alt | default: 'Moredocks' | escape }}" loading="lazy">
         {%- else -%}
           {{ 'lifestyle-1' | placeholder_svg_tag: 'placeholder-svg' }}
         {%- endif -%}
@@ -101,7 +99,6 @@
       "name": "Photo",
       "settings": [
         { "type": "image_picker", "id": "image", "label": "Image" },
-        { "type": "text", "id": "asset_image", "label": "Theme asset filename (fallback)" },
         { "type": "text", "id": "alt", "label": "Alt text" }
       ]
     }
