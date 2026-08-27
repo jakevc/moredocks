@@ -1,0 +1,101 @@
+{%- comment -%}
+  Renders the custom line item property fields for a product.
+
+  Single source of truth for the size option lists — rendered both by
+  snippets/buy-buttons.liquid on the product page and by
+  sections/main-cart-items.liquid when editing a line already in the cart.
+  Keep it that way; duplicating the lists is how they drift apart.
+
+  Accepts:
+  - product   {Object}  required
+  - uid       {String}  required, unique suffix for input ids/labels
+  - waist     {String}  optional, currently selected value
+  - inseam    {String}  optional
+  - chest     {String}  optional
+  - comments  {String}  optional
+{%- endcomment -%}
+
+{%- liquid
+  assign waist_sizes = '28,29,30,31,32,33,34,35,36,38,39,40,41,42' | split: ','
+  assign inseam_sizes = '29,30,31,32,33,34,35,36,37,38' | split: ','
+  assign chest_sizes = '34,36,38,40,42,44,46,48,50,52' | split: ','
+  assign wants_leg = false
+  assign wants_chest = false
+  if product.tags contains 'pants'
+    assign wants_leg = true
+  endif
+  if product.tags contains 'shirt' or product.tags contains 'coat'
+    assign wants_chest = true
+  endif
+-%}
+
+{%- if wants_leg -%}
+  <div class="product-form__input product-form__input--dropdown">
+    <label class="form__label" for="waist-size-{{ uid }}">
+      {{ 'products.product.waist_size' | t | default: 'Waist size' }}
+    </label>
+    <div class="select">
+      <select id="waist-size-{{ uid }}" class="select__select" name="properties[Waist]" required>
+        <option value="" disabled {% if waist == blank %}selected{% endif %}>
+          {{- 'products.product.select_waist' | t | default: 'Select a waist size' -}}
+        </option>
+        {%- for size in waist_sizes -%}
+          <option value="{{ size }}" {% if waist == size %}selected{% endif %}>{{ size }}"</option>
+        {%- endfor -%}
+      </select>
+      <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+    </div>
+  </div>
+
+  <div class="product-form__input product-form__input--dropdown">
+    <label class="form__label" for="inseam-size-{{ uid }}">
+      {{ 'products.product.inseam_size' | t | default: 'Inseam size' }}
+    </label>
+    <div class="select">
+      <select id="inseam-size-{{ uid }}" class="select__select" name="properties[Inseam]" required>
+        <option value="" disabled {% if inseam == blank %}selected{% endif %}>
+          {{- 'products.product.select_inseam' | t | default: 'Select an inseam length' -}}
+        </option>
+        {%- for size in inseam_sizes -%}
+          <option value="{{ size }}" {% if inseam == size %}selected{% endif %}>{{ size }}"</option>
+        {%- endfor -%}
+      </select>
+      <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+    </div>
+  </div>
+{%- endif -%}
+
+{%- if wants_chest -%}
+  <div class="product-form__input product-form__input--dropdown">
+    <label class="form__label" for="chest-size-{{ uid }}">
+      {{ 'products.product.chest_size' | t | default: 'Chest size' }}
+    </label>
+    <div class="select">
+      <select id="chest-size-{{ uid }}" class="select__select" name="properties[Chest]" required>
+        <option value="" disabled {% if chest == blank %}selected{% endif %}>
+          {{- 'products.product.select_chest' | t | default: 'Select a chest size' -}}
+        </option>
+        {%- for size in chest_sizes -%}
+          <option value="{{ size }}" {% if chest == size %}selected{% endif %}>{{ size }}"</option>
+        {%- endfor -%}
+      </select>
+      <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>
+    </div>
+  </div>
+{%- endif -%}
+
+<div class="product-form__input product-form__comments">
+  <label class="form__label" for="order-comments-{{ uid }}">Comments</label>
+  <p class="product-form__help-text">
+    Need any custom alterations? Let us know here and we'll do our best to accommodate your request.
+  </p>
+  <div class="field">
+    <textarea
+      id="order-comments-{{ uid }}"
+      class="text-area text-area--resize-vertical field__input"
+      name="properties[Comments]"
+      rows="2"
+      placeholder="E.g., custom hemming, tapering, or other alterations"
+    >{{ comments }}</textarea>
+  </div>
+</div>

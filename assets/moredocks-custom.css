@@ -41,6 +41,64 @@ summary.header__menu-item,
   font-size: 1.2rem;
 }
 
+/* ---- Cart: edit line item properties in place ----
+   Sizes and alteration notes are locked once an item is in the cart, so the
+   toggle below reveals the same fields the product page uses. Kept as a plain
+   underlined control rather than a button so it reads as secondary to Checkout. */
+.md-prop-edit {
+  margin-top: 1.2rem;
+}
+
+.md-prop-edit__toggle {
+  background: none;
+  border: 0;
+  padding: 0;
+  font-size: 1.3rem;
+  cursor: pointer;
+  color: rgba(var(--color-foreground), 0.75);
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.md-prop-edit__toggle:hover {
+  color: rgb(var(--color-foreground));
+}
+
+.md-prop-edit__form {
+  margin-top: 1.6rem;
+  padding: 1.6rem 0 0;
+  border-top: 1px solid rgba(var(--color-foreground), 0.15);
+  max-width: 42rem;
+}
+
+.md-prop-edit__form .product-form__input {
+  margin-bottom: 1.2rem;
+}
+
+.md-prop-edit__actions {
+  display: flex;
+  align-items: center;
+  gap: 1.6rem;
+  margin-top: 0.4rem;
+}
+
+.md-prop-edit__cancel {
+  background: none;
+  border: 0;
+  padding: 0;
+  cursor: pointer;
+  font-size: 1.3rem;
+  color: rgba(var(--color-foreground), 0.75);
+  text-decoration: underline;
+  text-underline-offset: 0.3rem;
+}
+
+.md-prop-edit__error {
+  margin: 1.2rem 0 0;
+  font-size: 1.3rem;
+  color: rgba(var(--color-foreground), 0.9);
+}
+
 /* Product cards: normalize gallery crops so the catalogue reads as one set */
 .card--standard .card__media .media img {
   object-fit: cover;
