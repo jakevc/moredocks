@@ -78,8 +78,12 @@
         <option value="" disabled {% if chest == blank %}selected{% endif %}>
           {{- 'products.product.select_chest' | t | default: 'Select a chest size' -}}
         </option>
+        {%- comment -%}
+          No inch mark here: chest sizes are garment sizes, not a measurement
+          in inches the way waist and inseam are.
+        {%- endcomment -%}
         {%- for size in chest_sizes -%}
-          <option value="{{ size }}" {% if chest == size %}selected{% endif %}>{{ size }}"</option>
+          <option value="{{ size }}" {% if chest == size %}selected{% endif %}>{{ size }}</option>
         {%- endfor -%}
       </select>
       <span class="svg-wrapper">{{- 'icon-caret.svg' | inline_asset_content -}}</span>

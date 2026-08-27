@@ -16,6 +16,27 @@
 (function () {
   'use strict';
 
+  /**
+   * <cart-items> listens for `change` on the whole element and runs Dawn's
+   * validateQuantity() on whatever fired it (assets/cart.js). That does
+   *   inputValue % parseInt(event.target.step)
+   * and a <select> has no `step`, so parseInt(undefined) is NaN, the modulo
+   * is NaN, and NaN !== 0 is always true — producing "You can only add this
+   * item in increments of undefined" on every size change.
+   *
+   * These fields are not quantity inputs, so their change events are stopped
+   * in the capture phase before they can reach Dawn's handler.
+   */
+  document.addEventListener(
+    'change',
+    function (event) {
+      if (event.target.closest && event.target.closest('.md-prop-edit__form')) {
+        event.stopPropagation();
+      }
+    },
+    true
+  );
+
   function fields(editor) {
     return editor.querySelectorAll('[name^="properties["]');
   }

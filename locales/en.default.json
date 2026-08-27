@@ -123,8 +123,8 @@
       "select_waist": "Select a waist size",
       "inseam_size": "Inseam size",
       "select_inseam": "Select an inseam length",
-      "chest_size": "Size",
-      "select_chest": "Select size",
+      "chest_size": "Chest size",
+      "select_chest": "Select a chest size",
       "inventory_in_stock": "In stock",
       "inventory_in_stock_show_count": "{{ quantity }} in stock",
       "inventory_low_stock": "Low stock",
@@ -289,7 +289,6 @@
       "announcement": "Announcement",
       "announcement_bar": "Announcement bar"
     },
-
     "header": {
       "announcement": "Announcement",
       "menu": "Menu",
