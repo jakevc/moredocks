@@ -29,6 +29,8 @@
       ],
       "settings": {
         "image": "shopify://shop_images/Moredocks-24.jpg",
+        "video": "shopify://files/videos/Still Life Homepage.mov",
+        "video_on_mobile": true,
         "image_overlay_opacity": 20,
         "image_height": "large",
         "image_behavior": "none",
