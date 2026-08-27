@@ -215,16 +215,25 @@
                             <button type="button" class="size-chart-unit-btn active" data-unit="in">in</button>
                             <button type="button" class="size-chart-unit-btn" data-unit="cm">cm</button>
                           </div>
+                          {%- comment -%}
+                            Markdown-style table out of the product metafield.
+                            Blank and |---|---| separator lines are filtered out
+                            up front so <thead> and <tbody> can be emitted
+                            unconditionally. Opening <tbody> inside the loop left
+                            the tags unbalanced to any parser reading the
+                            template statically, and emitted a stray </tbody>
+                            whenever the first line happened to be skipped.
+
+                            The newline is assigned out here on purpose: inside
+                            {% liquid %} every newline starts a new statement, so
+                            a string literal spanning two lines cannot parse.
+                            Rows are rejoined on a sentinel rather than a newline
+                            for the same reason.
+                          {%- endcomment -%}
+                          {%- assign size_chart_newline = '
+' -%}
                           {%- liquid
-                            # Markdown-style table out of the product metafield.
-                            # Blank and |---|---| separator lines are filtered
-                            # out up front so <thead> and <tbody> can be emitted
-                            # unconditionally. Opening <tbody> inside the loop
-                            # left the tags unbalanced to any parser reading the
-                            # template statically, and emitted a stray </tbody>
-                            # whenever the first line happened to be skipped.
-                            assign size_chart_raw = product.metafields.custom.size_chart.value | strip | split: '
-'
+                            assign size_chart_raw = product.metafields.custom.size_chart.value | strip | split: size_chart_newline
                             assign size_chart_rows = ''
                             for line in size_chart_raw
                               assign trimmed_line = line | strip
@@ -235,11 +244,9 @@
                               if stripped == blank
                                 continue
                               endif
-                              assign size_chart_rows = size_chart_rows | append: trimmed_line | append: '
-'
+                              assign size_chart_rows = size_chart_rows | append: trimmed_line | append: '~#~'
                             endfor
-                            assign size_chart_rows = size_chart_rows | strip | split: '
-'
+                            assign size_chart_rows = size_chart_rows | split: '~#~'
                           -%}
                           {%- if size_chart_rows.size > 0 -%}
                             <table>
