@@ -490,3 +490,25 @@
     color: currentColor;
   }
 }
+
+/* Optional background video (image-banner "Background video" setting).
+   Sits on top of the banner image inside .banner__media. No z-index: DOM order
+   puts it above the image, and .banner__media::after (the overlay) carries
+   z-index 1, so the overlay still paints above the video.
+   Hidden until the `playing` event fires, so a refused autoplay falls back to
+   the image rather than showing a black box or a poster frame. */
+.banner__video {
+  opacity: 0;
+  transition: opacity 0.8s ease;
+}
+
+.banner__video--playing {
+  opacity: 1;
+}
+
+.banner__video video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}

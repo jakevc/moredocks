@@ -55,32 +55,76 @@
   id="Banner-{{ section.id }}"
   class="banner banner--content-align-{{ section.settings.desktop_content_alignment }} banner--content-align-mobile-{{ section.settings.mobile_content_alignment }} banner--{{ section.settings.image_height }}{% if section.settings.stack_images_on_mobile and section.settings.image != blank and section.settings.image_2 != blank %} banner--stacked{% endif %}{% if section.settings.image_height == 'adapt' and section.settings.image != blank %} banner--adapt{% endif %}{% if section.settings.show_text_below %} banner--mobile-bottom{%- endif -%}{% if section.settings.show_text_box == false %} banner--desktop-transparent{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}"
 >
-  {%- if section.settings.image != blank -%}
-    <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
-      {%- liquid
-        assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
-        if section.settings.image_2 != blank
-          assign image_class = 'banner__media-image-half'
-        endif
-        if section.settings.image_2 != blank and section.settings.stack_images_on_mobile
-          assign sizes = stacked_sizes
-        elsif section.settings.image_2 != blank
-          assign sizes = half_width
-        else
-          assign sizes = full_width
-        endif
-      -%}
-      {{
-        section.settings.image
-        | image_url: width: 3840
-        | image_tag:
-          width: section.settings.image.width,
-          height: image_height,
-          class: image_class,
-          sizes: sizes,
-          widths: widths,
-          fetchpriority: fetch_priority
-      }}
+  {%- if section.settings.image != blank or section.settings.video != blank -%}
+    <div class="banner__media media{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
+      {%- if section.settings.image != blank -%}
+        {%- liquid
+          assign image_height = section.settings.image.width | divided_by: section.settings.image.aspect_ratio
+          if section.settings.image_2 != blank
+            assign image_class = 'banner__media-image-half'
+          endif
+          if section.settings.image_2 != blank and section.settings.stack_images_on_mobile
+            assign sizes = stacked_sizes
+          elsif section.settings.image_2 != blank
+            assign sizes = half_width
+          else
+            assign sizes = full_width
+          endif
+        -%}
+        {{
+          section.settings.image
+          | image_url: width: 3840
+          | image_tag:
+            width: section.settings.image.width,
+            height: image_height,
+            class: image_class,
+            sizes: sizes,
+            widths: widths,
+            fetchpriority: fetch_priority
+        }}
+      {%- endif -%}
+
+      {%- comment -%}
+        Optional background video, layered over the banner image.
+
+        The image is left exactly as it was — same markup, still fetchpriority
+        high — because it is the LCP paint and the fallback for every case where
+        autoplay is refused: iOS Low Power Mode, Data Saver, reduced motion, or
+        no JavaScript. The video sits on top at opacity 0 and only fades in once
+        playback has actually started, so a blocked video is invisible rather
+        than a black rectangle.
+      {%- endcomment -%}
+      {%- if section.settings.video != blank -%}
+        <div class="banner__video">
+          {{
+            section.settings.video
+            | video_tag: image_size: '1100x', autoplay: true, loop: true, muted: true, controls: false
+          }}
+        </div>
+        <script>
+          (function () {
+            var wrap = document.currentScript.previousElementSibling;
+            var video = wrap && wrap.querySelector('video');
+            if (!video) return;
+
+            /* Liquid cannot see the viewport or the motion preference, and
+               `display: none` still costs the full download. Removing the
+               element from the parser's reach is what actually skips it. */
+            var blocked = window.matchMedia('(prefers-reduced-motion: reduce)').matches
+              {%- unless section.settings.video_on_mobile %} || window.matchMedia('(max-width: 749px)').matches{% endunless %};
+            if (blocked) {
+              wrap.remove();
+              return;
+            }
+
+            var reveal = function () {
+              wrap.classList.add('banner__video--playing');
+            };
+            if (!video.paused && video.readyState > 2) reveal();
+            video.addEventListener('playing', reveal, { once: true });
+          })();
+        </script>
+      {%- endif -%}
     </div>
   {%- elsif section.settings.image_2 == blank -%}
     <div class="banner__media media{% if section.settings.image == blank and section.settings.image_2 == blank %} placeholder{% endif %}{% if section.settings.image_2 != blank %} banner__media-half{% endif %}{% if section.settings.image_behavior != 'none' %} animate--{{ section.settings.image_behavior }}{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--fade-in{% endif %}">
@@ -184,6 +228,19 @@
       "type": "image_picker",
       "id": "image_2",
       "label": "t:sections.image-banner.settings.image_2.label"
+    },
+    {
+      "type": "video",
+      "id": "video",
+      "label": "Background video",
+      "info": "Plays muted and looping over the image above. Keep an image set — it is what shows while the video loads and whenever autoplay is blocked."
+    },
+    {
+      "type": "checkbox",
+      "id": "video_on_mobile",
+      "default": true,
+      "label": "Play the video on mobile",
+      "info": "Turn off to serve the image on phones instead. Saves the download on cellular."
     },
     {
       "type": "range",
