@@ -185,7 +185,12 @@
                             Edit size or notes
                           </button>
 
-                          <form
+                          {%- comment -%}
+                            A div, not a form: the whole cart page is already wrapped in
+                            <form id="cart">, and HTML forbids nested forms — the browser
+                            silently drops the inner one and orphans its fields.
+                          {%- endcomment -%}
+                          <div
                             class="md-prop-edit__form"
                             id="PropEdit-{{ forloop.index }}"
                             hidden
@@ -196,14 +201,15 @@
                               waist: item.properties.Waist,
                               inseam: item.properties.Inseam,
                               chest: item.properties.Chest,
-                              comments: item.properties.Comments
+                              comments: item.properties.Comments,
+                              disabled: true
                             -%}
                             <div class="md-prop-edit__actions">
-                              <button type="submit" class="button button--small">Save</button>
+                              <button type="button" class="button button--small md-prop-edit__save">Save</button>
                               <button type="button" class="md-prop-edit__cancel link">Cancel</button>
                             </div>
                             <p class="md-prop-edit__error" role="alert" hidden></p>
-                          </form>
+                          </div>
                         </div>
                       {%- endunless -%}
 

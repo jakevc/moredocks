@@ -13,6 +13,9 @@
   - inseam    {String}  optional
   - chest     {String}  optional
   - comments  {String}  optional
+  - disabled  {Boolean} optional. Set when rendering inside another form (the cart
+                        page wraps everything in form#cart) so these fields are barred
+                        from that form's validation and are not submitted with it.
 {%- endcomment -%}
 
 {%- liquid
@@ -35,7 +38,7 @@
       {{ 'products.product.waist_size' | t | default: 'Waist size' }}
     </label>
     <div class="select">
-      <select id="waist-size-{{ uid }}" class="select__select" name="properties[Waist]" required>
+      <select id="waist-size-{{ uid }}" class="select__select" name="properties[Waist]" required{% if disabled %} disabled{% endif %}>
         <option value="" disabled {% if waist == blank %}selected{% endif %}>
           {{- 'products.product.select_waist' | t | default: 'Select a waist size' -}}
         </option>
@@ -52,7 +55,7 @@
       {{ 'products.product.inseam_size' | t | default: 'Inseam size' }}
     </label>
     <div class="select">
-      <select id="inseam-size-{{ uid }}" class="select__select" name="properties[Inseam]" required>
+      <select id="inseam-size-{{ uid }}" class="select__select" name="properties[Inseam]" required{% if disabled %} disabled{% endif %}>
         <option value="" disabled {% if inseam == blank %}selected{% endif %}>
           {{- 'products.product.select_inseam' | t | default: 'Select an inseam length' -}}
         </option>
@@ -71,7 +74,7 @@
       {{ 'products.product.chest_size' | t | default: 'Chest size' }}
     </label>
     <div class="select">
-      <select id="chest-size-{{ uid }}" class="select__select" name="properties[Chest]" required>
+      <select id="chest-size-{{ uid }}" class="select__select" name="properties[Chest]" required{% if disabled %} disabled{% endif %}>
         <option value="" disabled {% if chest == blank %}selected{% endif %}>
           {{- 'products.product.select_chest' | t | default: 'Select a chest size' -}}
         </option>
@@ -94,6 +97,7 @@
       id="order-comments-{{ uid }}"
       class="text-area text-area--resize-vertical field__input"
       name="properties[Comments]"
+      {% if disabled %}disabled{% endif %}
       rows="2"
       placeholder="E.g., custom hemming, tapering, or other alterations"
     >{{ comments }}</textarea>
