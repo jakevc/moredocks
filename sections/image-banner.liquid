@@ -108,11 +108,63 @@
         than a black rectangle.
       {%- endcomment -%}
       {%- if section.settings.video != blank -%}
+        {%- comment -%}
+          Sources are picked by hand rather than via the video_tag filter. That
+          filter emits exactly one <source>, always the largest rendition, with
+          no way to influence the choice and no bandwidth adaptation — for this
+          clip that is 1080p at 7.2Mbps, 9.7MB, charged to every phone on
+          cellular. 720p covers the desktop hero (1440x720 after object-fit, so
+          1080p is wasted detail) at 6.0MB, and 480p covers the ~375x390 mobile
+          crop at 2.0MB.
+
+          No poster and no <img> fallback: the banner still underneath already
+          fills that role, so either one would be a second download of a picture
+          nobody sees. aria-hidden because the clip is ambient and mute — it
+          carries nothing a screen reader should announce.
+        {%- endcomment -%}
+        {%- liquid
+          assign hero_video = section.settings.video
+          assign src_small = ''
+          assign height_small = 0
+          assign src_large = ''
+          assign height_large = 0
+          assign src_min = ''
+          assign height_min = 0
+          for source in hero_video.sources
+            if source.format == 'mp4'
+              if src_min == blank or source.height < height_min
+                assign height_min = source.height
+                assign src_min = source.url
+              endif
+              if source.height <= 480 and source.height > height_small
+                assign height_small = source.height
+                assign src_small = source.url
+              endif
+              if source.height <= 720 and source.height > height_large
+                assign height_large = source.height
+                assign src_large = source.url
+              endif
+            endif
+          endfor
+          if src_large == blank
+            assign src_large = src_min
+          endif
+          if src_small == blank
+            assign src_small = src_min
+          endif
+        -%}
         <div class="banner__video">
-          {{
-            section.settings.video
-            | video_tag: image_size: '1100x', autoplay: true, loop: true, muted: true, controls: false
-          }}
+          <video
+            playsinline
+            muted
+            loop
+            autoplay
+            preload="none"
+            aria-hidden="true"
+            tabindex="-1"
+            data-src-small="{{ src_small }}"
+            data-src-large="{{ src_large }}"
+          ></video>
           {%- comment -%}
             This script has to live inside .banner__video, not as a sibling of
             it. base.css gives every direct child of .media `display: block`,
@@ -126,21 +178,38 @@
               var video = wrap && wrap.querySelector('video');
               if (!video) return;
 
-              /* Liquid cannot see the viewport or the motion preference, and
-                 `display: none` still costs the full download. Removing the
-                 element from the parser's reach is what actually skips it. */
+              var small = window.matchMedia('(max-width: 749px)');
+
+              /* The element ships with no src, so the browser downloads nothing
+                 until the line below. Liquid cannot see the viewport or the
+                 motion preference, and hiding the video with CSS would still
+                 cost the full file — withholding the src is what makes these
+                 visitors free rather than merely unbothered. */
               var blocked = window.matchMedia('(prefers-reduced-motion: reduce)').matches
-                {%- unless section.settings.video_on_mobile %} || window.matchMedia('(max-width: 749px)').matches{% endunless %};
+                {%- unless section.settings.video_on_mobile %} || small.matches{% endunless %};
               if (blocked) {
                 wrap.remove();
                 return;
               }
 
-              var reveal = function () {
-                wrap.classList.add('banner__video--playing');
-              };
-              if (!video.paused && video.readyState > 2) reveal();
-              video.addEventListener('playing', reveal, { once: true });
+              var src = small.matches ? video.dataset.srcSmall : video.dataset.srcLarge;
+              if (!src) return;
+
+              video.addEventListener(
+                'playing',
+                function () {
+                  wrap.classList.add('banner__video--playing');
+                },
+                { once: true }
+              );
+
+              video.muted = true;
+              video.src = src;
+
+              /* A refused autoplay rejects here. Swallow it: the banner still is
+                 already on screen and the video simply stays at opacity 0. */
+              var started = video.play();
+              if (started && started.catch) started.catch(function () {});
             })();
           </script>
         </div>
