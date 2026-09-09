@@ -14,18 +14,18 @@
     "footer": {
       "type": "footer",
       "blocks": {
-        "text_3wrLRy": {
-          "type": "text",
-          "settings": {
-            "heading": "Drop us a line.",
-            "subtext": "<p><a href=\"mailto:service@moredocks.com\">service@moredocks.com</a></p>"
-          }
-        },
         "link_list_nav": {
           "type": "link_list",
           "settings": {
             "heading": "",
             "menu": "main-menu"
+          }
+        },
+        "text_3wrLRy": {
+          "type": "text",
+          "settings": {
+            "heading": "Drop us a line.",
+            "subtext": "<p><a href=\"mailto:service@moredocks.com\">service (at) moredocks.com</a></p>"
           }
         }
       },
