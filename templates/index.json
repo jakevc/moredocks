@@ -75,7 +75,7 @@
         "heading_XiYewX": {
           "type": "heading",
           "settings": {
-            "heading": "Built one at a time",
+            "heading": "Well kept. Kept close.",
             "heading_size": "h1"
           }
         },
@@ -116,7 +116,6 @@
       "settings": {
         "product": "cj-101-1",
         "image": "shopify://shop_images/Moredocks-3.jpg",
-        "asset_image": "",
         "alt": "Cowboy jean and denim shirt worn against a concrete wall in hard afternoon light",
         "eyebrow": "CJ.101.1",
         "heading": "Cowboy Jean",
@@ -131,7 +130,6 @@
       "type": "editorial-spotlight",
       "settings": {
         "product": "cc-101-1-cowboy-coat",
-        "asset_image": "",
         "alt": "The cowboy coat worn open with the collar up, in a plain room",
         "eyebrow": "CC.101.1",
         "heading": "Cowboy Coat",
@@ -177,7 +175,6 @@
           "type": "photo",
           "settings": {
             "image": "shopify://shop_images/md-rail-01.jpg",
-            "asset_image": "",
             "alt": "Western shirt and cowboy jean at golden hour"
           }
         },
@@ -185,7 +182,6 @@
           "type": "photo",
           "settings": {
             "image": "shopify://shop_images/md-rail-02.jpg",
-            "asset_image": "",
             "alt": "Cowboy jean over western boots"
           }
         },
@@ -193,7 +189,6 @@
           "type": "photo",
           "settings": {
             "image": "shopify://shop_images/md-rail-03.jpg",
-            "asset_image": "",
             "alt": "Seated on the red curb in full denim"
           }
         },
@@ -201,7 +196,6 @@
           "type": "photo",
           "settings": {
             "image": "shopify://shop_images/md-rail-04.jpg",
-            "asset_image": "",
             "alt": "Western shirt against jasmine"
           }
         },
@@ -209,7 +203,6 @@
           "type": "photo",
           "settings": {
             "image": "shopify://shop_images/md-rail-05.jpg",
-            "asset_image": "",
             "alt": "Denim western shirt, downtown"
           }
         },
@@ -217,7 +210,6 @@
           "type": "photo",
           "settings": {
             "image": "shopify://shop_images/md-rail-06.jpg",
-            "asset_image": "",
             "alt": "Full silhouette against jasmine wall"
           }
         }
