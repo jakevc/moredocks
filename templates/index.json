@@ -43,39 +43,13 @@
         "show_text_below": false
       }
     },
-    "marquee_ticker": {
-      "type": "marquee",
-      "blocks": {
-        "phrase_1": {
-          "type": "phrase",
-          "settings": {
-            "text": "Made to order"
-          }
-        },
-        "phrase_2": {
-          "type": "phrase",
-          "settings": {
-            "text": "Portland, Oregon"
-          }
-        }
-      },
-      "block_order": [
-        "phrase_1",
-        "phrase_2"
-      ],
-      "settings": {
-        "color_scheme": "scheme-5",
-        "text_size": 1.5,
-        "padding_vertical": 14
-      }
-    },
     "rich_text_rWKBWt": {
       "type": "rich-text",
       "blocks": {
         "heading_XiYewX": {
           "type": "heading",
           "settings": {
-            "heading": "Well kept. Kept close.",
+            "heading": "Well kept, kept close.",
             "heading_size": "h1"
           }
         },
@@ -381,7 +355,6 @@
   },
   "order": [
     "image_banner",
-    "marquee_ticker",
     "rich_text_rWKBWt",
     "spotlight_jean",
     "spotlight_coat",
