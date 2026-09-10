@@ -42,6 +42,7 @@
       "name": "t:sections.image-banner.presets.name",
       "settings": {
         "image": "shopify://shop_images/MG143286.jpg",
+        "video_on_mobile": true,
         "image_overlay_opacity": 0,
         "image_height": "large",
         "image_behavior": "none",
@@ -67,7 +68,7 @@
         "text_gcWm8i": {
           "type": "text",
           "settings": {
-            "text": "<h2>Beauty in the banal. Magic in the mundane. </h2>"
+            "text": "<h2>Well kept, kept close. </h2>"
           }
         }
       },
