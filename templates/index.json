@@ -201,7 +201,7 @@
             "title": "",
             "text": "<p>\"Refined enough to wear with tailoring or casual enough for a knit sweater.\"</p>",
             "link_label": "Fisherman Fall",
-            "link": ""
+            "link": "https://www.forbes.com/sites/carolinereilly/2026/10/06/fisherman-fall-blends-practicality-and-style/"
           }
         },
         "column_7CcCED": {
@@ -232,7 +232,7 @@
       ],
       "name": "t:sections.multicolumn.presets.name",
       "settings": {
-        "title": "Press",
+        "title": "",
         "heading_size": "h2",
         "image_width": "half",
         "image_ratio": "adapt",
