@@ -194,12 +194,22 @@
     "multicolumn_A6rYVc": {
       "type": "multicolumn",
       "blocks": {
+        "column_7h4iAc": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/forbes-wordmark.svg",
+            "title": "",
+            "text": "<p>\"Refined enough to wear with tailoring or casual enough for a knit sweater.\"</p>",
+            "link_label": "Fisherman Fall",
+            "link": ""
+          }
+        },
         "column_7CcCED": {
           "type": "column",
           "settings": {
             "image": "shopify://shop_images/Screenshot_2026-06-06_at_3.53.27_PM.png",
             "title": "",
-            "text": "<p>\"...they're the best fitting jeans I own...There's a beautiful simplicity in them.\"  </p>",
+            "text": "<p>\"...they're the best fitting jeans I own...There's a beautiful simplicity in them.\" &nbsp;</p>",
             "link_label": "The Bengal Stripe",
             "link": "https://thebengalstripe.substack.com/p/everything-i-did-to-prepare-for-my"
           }
@@ -216,6 +226,7 @@
         }
       },
       "block_order": [
+        "column_7h4iAc",
         "column_7CcCED",
         "column_r6cikJ"
       ],
@@ -227,7 +238,7 @@
         "image_ratio": "adapt",
         "button_label": "",
         "button_link": "",
-        "columns_desktop": 2,
+        "columns_desktop": 3,
         "column_alignment": "left",
         "background_style": "none",
         "color_scheme": "scheme-2",
