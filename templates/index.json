@@ -132,6 +132,16 @@
     "multicolumn_A6rYVc": {
       "type": "multicolumn",
       "blocks": {
+        "column_RneA3m": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/GQ_Logo.svg",
+            "title": "",
+            "text": "<p>“These [brands] are the ones keeping this thing alive—the romance and the stories behind these jeans, and they look for craftsmanship.”</p>",
+            "link_label": "America Is Officially Back in the Selvedge Denim Business",
+            "link": "https://www.gq.com/story/mount-vernon-mills-selvedge-denim-10-16-2026"
+          }
+        },
         "column_7h4iAc": {
           "type": "column",
           "settings": {
@@ -164,6 +174,7 @@
         }
       },
       "block_order": [
+        "column_RneA3m",
         "column_7h4iAc",
         "column_7CcCED",
         "column_r6cikJ"
@@ -176,7 +187,7 @@
         "image_ratio": "adapt",
         "button_label": "",
         "button_link": "",
-        "columns_desktop": 3,
+        "columns_desktop": 4,
         "column_alignment": "left",
         "background_style": "none",
         "color_scheme": "scheme-2",
