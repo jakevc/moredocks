@@ -22,6 +22,12 @@
       if block.settings.show_dynamic_checkout and gift_card_recipient_feature_active == false
         assign show_dynamic_checkout = true
       endif
+
+      assign preorder_active = false
+      if block.settings.enable_preorder and product.gift_card? == false
+        assign preorder_active = true
+        assign preorder_label = block.settings.preorder_button_label | default: 'Pre-order'
+      endif
     -%}
 
     <product-form
@@ -66,6 +72,10 @@
           </div>
         {%- endunless -%}
 
+        {%- if preorder_active and block.settings.preorder_message != blank -%}
+          <input type="hidden" name="properties[Pre-order]" value="{{ block.settings.preorder_message | escape }}">
+        {%- endif -%}
+
         <div class="product-form__buttons">
           {%- liquid
             assign check_against_inventory = true
@@ -81,6 +91,9 @@
             type="submit"
             name="add"
             class="product-form__submit button button--full-width {% if show_dynamic_checkout %}button--secondary{% else %}button--primary{% endif %}"
+            {% if preorder_active %}
+              data-add-label="{{ preorder_label | escape }}"
+            {% endif %}
             {% if product.selected_or_first_available_variant.available == false
               or quantity_rule_soldout
               or product.selected_or_first_available_variant == null
@@ -93,6 +106,8 @@
                 {{ 'products.product.unavailable' | t }}
               {%- elsif product.selected_or_first_available_variant.available == false or quantity_rule_soldout -%}
                 {{ 'products.product.sold_out' | t }}
+              {%- elsif preorder_active -%}
+                {{ preorder_label | escape }}
               {%- else -%}
                 {{ 'products.product.add_to_cart' | t }}
               {%- endif -%}
@@ -103,6 +118,9 @@
             {{ form | payment_button }}
           {%- endif -%}
         </div>
+        {%- if preorder_active and block.settings.preorder_message != blank -%}
+          <p class="product-form__preorder-message caption-large">{{ block.settings.preorder_message | escape }}</p>
+        {%- endif -%}
       {%- endform -%}
     </product-form>
   {%- else -%}

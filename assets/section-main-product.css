@@ -375,6 +375,12 @@ a.product__text {
   max-width: 44rem;
 }
 
+.product-form__preorder-message {
+  max-width: 44rem;
+  margin: 1rem 0 0;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
 .product--no-media .product__info-container > modal-opener {
   display: block;
   text-align: center;
