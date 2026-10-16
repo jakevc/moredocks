@@ -1045,6 +1045,30 @@
           "default": true,
           "label": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.label",
           "info": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.info"
+        },
+        {
+          "type": "header",
+          "content": "Pre-order"
+        },
+        {
+          "type": "checkbox",
+          "id": "enable_preorder",
+          "default": false,
+          "label": "Enable pre-order",
+          "info": "Shows a pre-order button and ship date message. The product must also be set to continue selling when out of stock."
+        },
+        {
+          "type": "text",
+          "id": "preorder_button_label",
+          "default": "Pre-order",
+          "label": "Pre-order button label"
+        },
+        {
+          "type": "text",
+          "id": "preorder_message",
+          "default": "Pre-order: estimated to ship in [month year]",
+          "label": "Pre-order message",
+          "info": "Shown under the button and saved on the cart item and order, so customers and your order list see it."
         }
       ]
     },
