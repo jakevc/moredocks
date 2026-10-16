@@ -21,7 +21,19 @@
         "show_social": false,
         "enable_country_selector": false,
         "enable_language_selector": false
-      }
+      },
+      "blocks": {
+        "announcement_gq_preorder": {
+          "type": "announcement",
+          "settings": {
+            "text": "As seen in GQ: the SJ in Mt. Vernon selvedge, now on pre-order",
+            "link": "/products/sj-101-1-mt-vernon-selvedge"
+          }
+        }
+      },
+      "block_order": [
+        "announcement_gq_preorder"
+      ]
     },
     "header": {
       "type": "header",
