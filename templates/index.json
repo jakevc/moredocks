@@ -142,6 +142,16 @@
             "link": "https://www.gq.com/story/mount-vernon-mills-selvedge-denim-10-16-2026"
           }
         },
+        "column_bkQPaa": {
+          "type": "column",
+          "settings": {
+            "image": "shopify://shop_images/Heddels-logo-e1750414605921.png",
+            "title": "",
+            "text": "<p>\"This all leads to Moredocks, of Portland, Oregon... known for creating its Western-inspired denim line...\"</p>",
+            "link_label": "Moredocks Marks Return of American Selvedge with Mount Vernon Mills",
+            "link": "https://www.heddels.com/2026/10/moredocks-marks-return-of-american-selvedge-with-mount-vernon-mills/"
+          }
+        },
         "column_7h4iAc": {
           "type": "column",
           "settings": {
@@ -167,7 +177,7 @@
           "settings": {
             "image": "shopify://shop_images/Screenshot_2026-06-06_at_4.00.16_PM.png",
             "title": "",
-            "text": "<p>\"I like the fact that they're made in the US, they're made to order...They're great. I love them. They fit really, really nicely. So if you're into bootcut jeans, you don't have a lot of places to go...\"  </p>",
+            "text": "<p>\"I like the fact that they're made in the US, they're made to order...They're great. I love them. They fit really, really nicely. So if you're into bootcut jeans, you don't have a lot of places to go...\" &nbsp;</p>",
             "link_label": "Die, Workwear! Podcast",
             "link": "https://www.patreon.com/cw/blamo"
           }
@@ -175,6 +185,7 @@
       },
       "block_order": [
         "column_RneA3m",
+        "column_bkQPaa",
         "column_7h4iAc",
         "column_7CcCED",
         "column_r6cikJ"
@@ -187,7 +198,7 @@
         "image_ratio": "adapt",
         "button_label": "",
         "button_link": "",
-        "columns_desktop": 4,
+        "columns_desktop": 5,
         "column_alignment": "left",
         "background_style": "none",
         "color_scheme": "scheme-2",
