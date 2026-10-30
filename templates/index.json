@@ -72,63 +72,6 @@
         "padding_bottom": 32
       }
     },
-    "spotlight_jean": {
-      "type": "editorial-spotlight",
-      "settings": {
-        "product": "cj-101-1",
-        "image": "shopify://shop_images/Moredocks-3.jpg",
-        "alt": "Cowboy jean and denim shirt worn against a concrete wall in hard afternoon light",
-        "eyebrow": "CJ.101.1",
-        "heading": "Cowboy Jean",
-        "text": "<p>High rise. Subtle flare.</p>",
-        "button_label": "Shop the Cowboy Jean",
-        "button_link": "",
-        "reverse": false,
-        "color_scheme": "scheme-2"
-      }
-    },
-    "spotlight_coat": {
-      "type": "editorial-spotlight",
-      "settings": {
-        "product": "cc-101-1-cowboy-coat",
-        "alt": "The cowboy coat worn open with the collar up, in a plain room",
-        "eyebrow": "CC.101.1",
-        "heading": "Cowboy Coat",
-        "text": "<p>Pleated placket. Cinch back.</p>",
-        "button_label": "Shop the Cowboy Coat",
-        "button_link": "",
-        "reverse": true,
-        "color_scheme": "scheme-1"
-      }
-    },
-    "featured_collection": {
-      "type": "featured-collection",
-      "settings": {
-        "collection": "core",
-        "products_to_show": 4,
-        "title": "Catalogue",
-        "heading_size": "h2",
-        "description": "",
-        "show_description": false,
-        "description_style": "body",
-        "columns_desktop": 4,
-        "enable_desktop_slider": false,
-        "full_width": true,
-        "show_view_all": false,
-        "view_all_style": "outline",
-        "color_scheme": "scheme-1",
-        "image_ratio": "portrait",
-        "image_shape": "default",
-        "show_secondary_image": true,
-        "show_vendor": false,
-        "show_rating": false,
-        "quick_add": "none",
-        "columns_mobile": "2",
-        "swipe_on_mobile": false,
-        "padding_top": 44,
-        "padding_bottom": 36
-      }
-    },
     "multicolumn_A6rYVc": {
       "type": "multicolumn",
       "blocks": {
@@ -206,6 +149,63 @@
         "swipe_on_mobile": false,
         "padding_top": 60,
         "padding_bottom": 60
+      }
+    },
+    "spotlight_jean": {
+      "type": "editorial-spotlight",
+      "settings": {
+        "product": "cj-101-1",
+        "image": "shopify://shop_images/Moredocks-3.jpg",
+        "alt": "Cowboy jean and denim shirt worn against a concrete wall in hard afternoon light",
+        "eyebrow": "CJ.101.1",
+        "heading": "Cowboy Jean",
+        "text": "<p>High rise. Subtle flare.</p>",
+        "button_label": "Shop the Cowboy Jean",
+        "button_link": "",
+        "reverse": false,
+        "color_scheme": "scheme-2"
+      }
+    },
+    "spotlight_coat": {
+      "type": "editorial-spotlight",
+      "settings": {
+        "product": "cc-101-1-cowboy-coat",
+        "alt": "The cowboy coat worn open with the collar up, in a plain room",
+        "eyebrow": "CC.101.1",
+        "heading": "Cowboy Coat",
+        "text": "<p>Pleated placket. Cinch back.</p>",
+        "button_label": "Shop the Cowboy Coat",
+        "button_link": "",
+        "reverse": true,
+        "color_scheme": "scheme-1"
+      }
+    },
+    "featured_collection": {
+      "type": "featured-collection",
+      "settings": {
+        "collection": "core",
+        "products_to_show": 4,
+        "title": "Catalogue",
+        "heading_size": "h2",
+        "description": "",
+        "show_description": false,
+        "description_style": "body",
+        "columns_desktop": 4,
+        "enable_desktop_slider": false,
+        "full_width": true,
+        "show_view_all": false,
+        "view_all_style": "outline",
+        "color_scheme": "scheme-1",
+        "image_ratio": "portrait",
+        "image_shape": "default",
+        "show_secondary_image": true,
+        "show_vendor": false,
+        "show_rating": false,
+        "quick_add": "none",
+        "columns_mobile": "2",
+        "swipe_on_mobile": false,
+        "padding_top": 44,
+        "padding_bottom": 36
       }
     },
     "photo_rail": {
@@ -376,10 +376,10 @@
   "order": [
     "image_banner",
     "rich_text_rWKBWt",
+    "multicolumn_A6rYVc",
     "spotlight_jean",
     "spotlight_coat",
     "featured_collection",
-    "multicolumn_A6rYVc",
     "photo_rail",
     "reviews_quotes",
     "newsletter_signup"
