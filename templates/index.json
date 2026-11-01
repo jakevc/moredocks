@@ -48,8 +48,8 @@
         "heading_XiYewX": {
           "type": "heading",
           "settings": {
-            "heading": "Well kept, kept close.",
-            "heading_size": "h1"
+            "heading": "",
+            "heading_size": "h2"
           }
         },
         "text_dK3Ym9": {
@@ -68,8 +68,8 @@
         "content_alignment": "center",
         "color_scheme": "scheme-5",
         "full_width": true,
-        "padding_top": 32,
-        "padding_bottom": 32
+        "padding_top": 0,
+        "padding_bottom": 20
       }
     },
     "multicolumn_A6rYVc": {
@@ -120,7 +120,7 @@
           "settings": {
             "image": "shopify://shop_images/Screenshot_2026-06-06_at_4.00.16_PM.png",
             "title": "",
-            "text": "<p>\"I like the fact that they're made in the US, they're made to order...They're great. I love them. They fit really, really nicely. So if you're into bootcut jeans, you don't have a lot of places to go...\" &nbsp;</p>",
+            "text": "<p>\"I like the fact that they're made in the US, they're made to order...They're great. I love them. They fit really, really nicely. So if you're into bootcut jeans, you don't have a lot of places to go...\"&nbsp;</p>",
             "link_label": "Die, Workwear! Podcast",
             "link": "https://www.patreon.com/cw/blamo"
           }
@@ -144,11 +144,11 @@
         "columns_desktop": 5,
         "column_alignment": "left",
         "background_style": "none",
-        "color_scheme": "scheme-2",
+        "color_scheme": "scheme-1",
         "columns_mobile": "1",
         "swipe_on_mobile": false,
-        "padding_top": 60,
-        "padding_bottom": 60
+        "padding_top": 32,
+        "padding_bottom": 12
       }
     },
     "spotlight_jean": {
