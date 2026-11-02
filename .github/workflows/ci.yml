@@ -12,3 +12,5 @@ jobs:
         uses: shopify/theme-check-action@v2
         with:
           token: ${{ github.token }}
+          # Shopify CLI 5 changed the theme check JSON format, which crashes this action.
+          version: 4.9.5
