@@ -155,13 +155,13 @@
       "type": "featured-collection",
       "settings": {
         "collection": "core",
-        "products_to_show": 4,
+        "products_to_show": 5,
         "title": "Catalogue",
         "heading_size": "h2",
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "columns_desktop": 4,
+        "columns_desktop": 3,
         "enable_desktop_slider": false,
         "full_width": true,
         "show_view_all": false,
@@ -177,68 +177,6 @@
         "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
-      }
-    },
-    "photo_rail": {
-      "type": "photo-rail",
-      "blocks": {
-        "rail_1": {
-          "type": "photo",
-          "settings": {
-            "image": "shopify://shop_images/md-rail-01.jpg",
-            "alt": "Western shirt and cowboy jean at golden hour"
-          }
-        },
-        "rail_2": {
-          "type": "photo",
-          "settings": {
-            "image": "shopify://shop_images/md-rail-02.jpg",
-            "alt": "Cowboy jean over western boots"
-          }
-        },
-        "rail_3": {
-          "type": "photo",
-          "settings": {
-            "image": "shopify://shop_images/md-rail-03.jpg",
-            "alt": "Seated on the red curb in full denim"
-          }
-        },
-        "rail_4": {
-          "type": "photo",
-          "settings": {
-            "image": "shopify://shop_images/md-rail-04.jpg",
-            "alt": "Western shirt against jasmine"
-          }
-        },
-        "rail_5": {
-          "type": "photo",
-          "settings": {
-            "image": "shopify://shop_images/md-rail-05.jpg",
-            "alt": "Denim western shirt, downtown"
-          }
-        },
-        "rail_6": {
-          "type": "photo",
-          "settings": {
-            "image": "shopify://shop_images/md-rail-06.jpg",
-            "alt": "Full silhouette against jasmine wall"
-          }
-        }
-      },
-      "block_order": [
-        "rail_1",
-        "rail_2",
-        "rail_3",
-        "rail_4",
-        "rail_5",
-        "rail_6"
-      ],
-      "settings": {
-        "heading": "",
-        "per_view": 4,
-        "color_scheme": "scheme-1",
-        "padding_top": 8,
-        "padding_bottom": 8
       }
     },
     "reviews_quotes": {
@@ -349,7 +287,6 @@
     "rich_text_rWKBWt",
     "multicolumn_A6rYVc",
     "featured_collection",
-    "photo_rail",
     "reviews_quotes",
     "newsletter_signup"
   ]
