@@ -199,7 +199,7 @@
               {%- when 'size_chart' -%}
                 {%- if product.metafields.custom.size_chart.value != blank -%}
                   <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
-                    <details id="Details-SizeChart-{{ block.id }}-{{ section.id }}">
+                    <details id="Details-SizeChart-{{ block.id }}-{{ section.id }}"{% if block.settings.open_by_default %} open{% endif %}>
                       <summary>
                         <div class="summary__title">
                           {% render 'icon-accordion', icon: 'ruler' %}
@@ -299,7 +299,7 @@
               {%- when 'fit_info' -%}
                 {%- if product.metafields.custom.fit_info.value != blank -%}
                   <div class="product__accordion accordion quick-add-hidden" {{ block.shopify_attributes }}>
-                    <details id="Details-FitInfo-{{ block.id }}-{{ section.id }}">
+                    <details id="Details-FitInfo-{{ block.id }}-{{ section.id }}"{% if block.settings.open_by_default %} open{% endif %}>
                       <summary>
                         <div class="summary__title">
                           <h2 class="h4 accordion__title">
@@ -609,7 +609,7 @@
                   product: product,
                   product_form_id: product_form_id,
                   section_id: section.id,
-                  show_pickup_availability: true
+                  show_pickup_availability: false
                 -%}
               {%- when 'rating' -%}
                 {%- if product.metafields.reviews.rating.value != blank -%}
@@ -1047,6 +1047,13 @@
           "info": "t:sections.main-product.blocks.buy_buttons.settings.show_gift_card_recipient.info"
         },
         {
+          "type": "text",
+          "id": "lead_time_message",
+          "default": "Made to order in Portland, Oregon. Ships in 3–4 weeks.",
+          "label": "Lead time message",
+          "info": "Shown under the button when pre-order is off. Leave blank to hide."
+        },
+        {
           "type": "header",
           "content": "Pre-order"
         },
@@ -1087,6 +1094,12 @@
           "id": "heading",
           "default": "Size Chart",
           "label": "Heading"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_by_default",
+          "default": true,
+          "label": "Open by default"
         }
       ]
     },
@@ -1100,6 +1113,12 @@
           "id": "heading",
           "default": "Fit Info",
           "label": "Heading"
+        },
+        {
+          "type": "checkbox",
+          "id": "open_by_default",
+          "default": true,
+          "label": "Open by default"
         }
       ]
     },

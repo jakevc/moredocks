@@ -120,6 +120,8 @@
         </div>
         {%- if preorder_active and block.settings.preorder_message != blank -%}
           <p class="product-form__preorder-message caption-large">{{ block.settings.preorder_message | escape }}</p>
+        {%- elsif block.settings.lead_time_message != blank -%}
+          <p class="product-form__preorder-message caption-large">{{ block.settings.lead_time_message | escape }}</p>
         {%- endif -%}
       {%- endform -%}
     </product-form>

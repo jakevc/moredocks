@@ -48,7 +48,7 @@
         "heading_XiYewX": {
           "type": "heading",
           "settings": {
-            "heading": "",
+            "heading": "Well kept, kept close.",
             "heading_size": "h2"
           }
         },
@@ -161,7 +161,7 @@
         "description": "",
         "show_description": false,
         "description_style": "body",
-        "columns_desktop": 4,
+        "columns_desktop": 2,
         "enable_desktop_slider": false,
         "full_width": true,
         "show_view_all": false,
@@ -173,7 +173,7 @@
         "show_vendor": false,
         "show_rating": false,
         "quick_add": "none",
-        "columns_mobile": "2",
+        "columns_mobile": "1",
         "swipe_on_mobile": false,
         "padding_top": 44,
         "padding_bottom": 36
@@ -254,14 +254,14 @@
         "news_heading": {
           "type": "heading",
           "settings": {
-            "heading": "Join the list",
+            "heading": "First in line",
             "heading_size": "h1"
           }
         },
         "news_text": {
           "type": "paragraph",
           "settings": {
-            "text": "<p>Occasional updates from the workshop.</p>"
+            "text": "<p>Early access to new drops and limited runs, like the Mt. Vernon selvedge pre-order. A few letters a year from the workshop, nothing more.</p>"
           }
         },
         "news_form": {
