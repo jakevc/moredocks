@@ -49,6 +49,7 @@
     or section.settings.enable_follow_on_shop
   -%}
     {%- unless only_empty_brand -%}
+      {%- assign instagram_in_block = false -%}
       <div class="footer__content-top page-width">
         {%- if section.blocks.size > 0 -%}
           {%- liquid
@@ -61,7 +62,7 @@
             endif
           -%}
           <div
-            class="footer__blocks-wrapper grid grid--1-col grid--2-col grid--4-col-tablet {{ footer_grid_class }}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
+            class="footer__blocks-wrapper grid grid--1-col grid--2-col grid--4-col-tablet {{ footer_grid_class }}{% if section.blocks.size == 2 %} footer__blocks-wrapper--split{% endif %}{% if settings.animations_reveal_on_scroll %} scroll-trigger animate--slide-in{% endif %}"
             {% if settings.animations_reveal_on_scroll %}
               data-cascade
             {% endif %}
@@ -85,6 +86,26 @@
                   {%- when 'text' -%}
                     <div class="footer-block__details-content rte">
                       {{ block.settings.subtext }}
+                    {%- comment -%}
+                      Instagram sits under the contact text as an icon plus the handle,
+                      instead of a lone icon floating in its own row below the blocks.
+                    {%- endcomment -%}
+                    {%- if section.settings.show_social and settings.social_instagram_link != blank and instagram_in_block == false -%}
+                      {%- assign instagram_handle = settings.social_instagram_link
+                        | split: 'instagram.com/'
+                        | last
+                        | split: '?'
+                        | first
+                        | remove: '/'
+                      -%}
+                      <a href="{{ settings.social_instagram_link }}" class="footer-instagram">
+                        <span class="svg-wrapper" aria-hidden="true">
+                          {{- 'icon-instagram.svg' | inline_asset_content -}}
+                        </span>
+                        <span>@{{ instagram_handle }}</span>
+                      </a>
+                      {%- assign instagram_in_block = true -%}
+                    {%- endif -%}
                     </div>
                   {%- when 'link_list' -%}
                     {%- if block.settings.menu != blank -%}
@@ -242,7 +263,7 @@
             </div>
           {%- endif -%}
 
-          {%- if section.settings.show_social and has_social_icons -%}
+          {%- if section.settings.show_social and has_social_icons and instagram_in_block == false -%}
             {%- render 'social-icons', class: 'footer__list-social' -%}
           {%- endif -%}
         </div>
