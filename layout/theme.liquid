@@ -15,6 +15,14 @@
       <link rel="preconnect" href="https://fonts.shopifycdn.com" crossorigin>
     {%- endunless -%}
 
+    {%- comment -%}
+      /collections/all is Shopify's built-in "Products" list and can't be edited in admin,
+      so it gets the catalogue's title and description here.
+    {%- endcomment -%}
+    {%- if request.page_type == 'collection' and collection.handle == 'all' -%}
+      {%- assign page_title = 'Catalogue' -%}
+      {%- assign page_description = 'The full Moredocks catalogue: cowboy jeans, straight jeans, western shirts and coats, made to order in Portland, Oregon from Japanese and American denim.' -%}
+    {%- endif -%}
     <title>
       {{ page_title }}
       {%- if current_tags %} &ndash; tagged "{{ current_tags | join: ', ' }}"{% endif -%}
@@ -26,7 +34,7 @@
       <meta name="description" content="{{ page_description | escape }}">
     {% endif %}
 
-    {% render 'meta-tags' %}
+    {% render 'meta-tags', page_title: page_title, page_description: page_description %}
 
     <script src="{{ 'constants.js' | asset_url }}" defer="defer"></script>
     <script src="{{ 'pubsub.js' | asset_url }}" defer="defer"></script>
