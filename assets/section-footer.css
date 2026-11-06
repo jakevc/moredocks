@@ -506,3 +506,43 @@
     }
   }
 }
+
+/* Instagram handle under the contact text */
+.footer-instagram,
+.rte .footer-instagram {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.8rem;
+  margin-top: 1.2rem;
+  text-decoration: none;
+  color: rgba(var(--color-foreground), 0.75);
+}
+
+.footer-instagram:hover {
+  color: rgb(var(--color-foreground));
+}
+
+.footer-instagram .svg-wrapper,
+.footer-instagram svg {
+  width: 1.8rem;
+  height: 1.8rem;
+}
+
+/* Two blocks: menu on the left edge, contact on the right edge, top-aligned */
+@media screen and (min-width: 750px) {
+  .footer__blocks-wrapper--split {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+  }
+
+  .footer__blocks-wrapper--split > .footer-block.grid__item {
+    flex: 0 1 auto;
+    width: auto;
+    max-width: none;
+  }
+
+  .footer__blocks-wrapper--split > .footer-block:last-child {
+    text-align: right;
+  }
+}
