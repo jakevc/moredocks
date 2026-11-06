@@ -8,6 +8,7 @@
 
   Product tags pick the fields: 'pants' adds waist + inseam, 'shirt' or 'coat'
   adds chest, and 'unhemmed' adds an Unhemmed choice to the inseam list.
+  The Comments box shows on every product unless it is tagged 'no-comments'.
 
   Accepts:
   - product   {Object}  required
@@ -28,6 +29,7 @@
   assign wants_leg = false
   assign wants_chest = false
   assign offers_unhemmed = false
+  assign wants_comments = true
   if product.tags contains 'pants'
     assign wants_leg = true
   endif
@@ -36,6 +38,9 @@
   endif
   if product.tags contains 'shirt' or product.tags contains 'coat'
     assign wants_chest = true
+  endif
+  if product.tags contains 'no-comments'
+    assign wants_comments = false
   endif
 -%}
 
@@ -101,19 +106,21 @@
   </div>
 {%- endif -%}
 
-<div class="product-form__input product-form__comments">
-  <label class="form__label" for="order-comments-{{ uid }}">Comments</label>
-  <p class="product-form__help-text">
-    Need any custom alterations? Let us know here and we'll do our best to accommodate your request.
-  </p>
-  <div class="field">
-    <textarea
-      id="order-comments-{{ uid }}"
-      class="text-area text-area--resize-vertical field__input"
-      name="properties[Comments]"
-      {% if disabled %}disabled{% endif %}
-      rows="2"
-      placeholder="E.g., custom hemming, tapering, or other alterations"
-    >{{ comments }}</textarea>
+{%- if wants_comments -%}
+  <div class="product-form__input product-form__comments">
+    <label class="form__label" for="order-comments-{{ uid }}">Comments</label>
+    <p class="product-form__help-text">
+      Need any custom alterations? Let us know here and we'll do our best to accommodate your request.
+    </p>
+    <div class="field">
+      <textarea
+        id="order-comments-{{ uid }}"
+        class="text-area text-area--resize-vertical field__input"
+        name="properties[Comments]"
+        {% if disabled %}disabled{% endif %}
+        rows="2"
+        placeholder="E.g., custom hemming, tapering, or other alterations"
+      >{{ comments }}</textarea>
+    </div>
   </div>
-</div>
+{%- endif -%}
