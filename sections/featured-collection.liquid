@@ -64,6 +64,19 @@
   endif
 -%}
 
+{%- comment -%}
+  Tell the browser how wide each card really is, so it picks a sharp image.
+  The card snippet's default assumes four columns; with two full-width columns
+  that is under half the real width and the photos come out blurry.
+{%- endcomment -%}
+{%- capture card_sizes -%}
+  {%- if section.settings.full_width -%}
+    (min-width: 990px) calc(100vw / {{ columns_desktop_int }}),
+  {%- else -%}
+    (min-width: {{ settings.page_width }}px) {{ settings.page_width | minus: 100 | divided_by: columns_desktop_int }}px, (min-width: 990px) calc((100vw - 100px) / {{ columns_desktop_int }}),
+  {%- endif %} calc(100vw / {{ columns_mobile_int }})
+{%- endcapture -%}
+
 <div
   class="color-{{ section.settings.color_scheme }} isolate gradient"
 >
@@ -119,6 +132,7 @@
               >
                 {% render 'card-product',
                   card_product: product,
+                  sizes: card_sizes,
                   media_aspect_ratio: section.settings.image_ratio,
                   image_shape: section.settings.image_shape,
                   lazy_load: lazy_load,
